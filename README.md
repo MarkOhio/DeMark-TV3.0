@@ -95,8 +95,8 @@ Usage, redistribution, or modification of the code without explicit permission i
 ---
 
 ## 📬 <span style="color:#20B2AA;">Contact</span>  
-- 👤 Name: **PUT-YOUR-NAME-HERE**  
-- 💻 GitHub: **PUT-YOUR-GITHUB-LINK-HERE**  
-- ✉️ Email: **PUT-YOUR-EMAIL-HERE**  
+- 👤 Name: **MARK OBOSOJIE OHIO**  
+- 💻 GitHub: **https://github.com/MarkOhio/**  
+- ✉️ Email: **obosohio@gmail.com**  
 
 ---
