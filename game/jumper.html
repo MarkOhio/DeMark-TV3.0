@@ -1,0 +1,824 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Jumping Cube</title>
+    <style>
+        :root {
+            --cube-color: #4285F4;
+            --platform-color: #5C6BC0;
+            --obstacle-color: #EF5350;
+            --collectible-color: #FFCA28;
+            --background-start: #80DEEA;
+            --background-end: #4FC3F7;
+            --text-color: #ffffff;
+            --button-bg: #333;
+            --button-hover: #444;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: Arial, sans-serif;
+        }
+
+        body {
+            background: linear-gradient(to bottom, var(--background-start), var(--background-end));
+            color: var(--text-color);
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            padding: 20px;
+            overflow-x: hidden;
+        }
+
+        .header {
+            width: 100%;
+            max-width: 500px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 20px;
+        }
+
+        h1 {
+            font-size: 2.5rem;
+            color: var(--text-color);
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
+        }
+
+        .scores {
+            display: flex;
+            gap: 10px;
+        }
+
+        .score-box {
+            background: var(--button-bg);
+            color: white;
+            padding: 10px 15px;
+            border-radius: 5px;
+            text-align: center;
+            min-width: 80px;
+        }
+
+        .score-title {
+            font-size: 0.8rem;
+            text-transform: uppercase;
+        }
+
+        .score-value {
+            font-size: 1.2rem;
+            font-weight: bold;
+        }
+
+        .controls {
+            width: 100%;
+            max-width: 500px;
+            display: flex;
+            justify-content: space-between;
+            margin-bottom: 20px;
+            flex-wrap: wrap;
+            gap: 10px;
+        }
+
+        button {
+            background: var(--button-bg);
+            color: white;
+            border: none;
+            border-radius: 5px;
+            padding: 10px 15px;
+            font-size: 1rem;
+            cursor: pointer;
+            transition: all 0.2s;
+            flex-grow: 1;
+        }
+
+        button:hover {
+            background: var(--button-hover);
+        }
+
+        .game-container {
+            position: relative;
+            width: 100%;
+            max-width: 500px;
+            height: 400px;
+            margin-bottom: 20px;
+            overflow: hidden;
+            border-radius: 10px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+        }
+
+        #game-canvas {
+            background: #80DEEA;
+            display: block;
+            width: 100%;
+            height: 100%;
+        }
+
+        .overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.7);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            z-index: 100;
+            opacity: 0;
+            pointer-events: none;
+            transition: opacity 0.3s;
+        }
+
+        .overlay.active {
+            opacity: 1;
+            pointer-events: all;
+        }
+
+        .instructions {
+            background-color: #333;
+            padding: 20px;
+            border-radius: 10px;
+            max-width: 500px;
+            width: 90%;
+            max-height: 80vh;
+            overflow-y: auto;
+            position: relative;
+            border: 1px solid #444;
+        }
+
+        .instructions h2 {
+            margin-bottom: 15px;
+            color: white;
+        }
+
+        .instructions p {
+            margin-bottom: 10px;
+            line-height: 1.5;
+        }
+
+        .instructions ul {
+            margin-bottom: 15px;
+            padding-left: 20px;
+        }
+
+        .instructions li {
+            margin-bottom: 5px;
+        }
+
+        .close-btn {
+            position: absolute;
+            top: 10px;
+            right: 10px;
+            background: none;
+            border: none;
+            font-size: 1.5rem;
+            color: white;
+            cursor: pointer;
+            padding: 5px;
+        }
+
+        .game-over {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.7);
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            z-index: 10;
+            opacity: 0;
+            pointer-events: none;
+            transition: opacity 0.3s;
+        }
+
+        .game-over.active {
+            opacity: 1;
+            pointer-events: all;
+        }
+
+        .game-over h2 {
+            font-size: 2rem;
+            margin-bottom: 20px;
+            color: white;
+        }
+
+        .pause-overlay {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.5);
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            z-index: 5;
+            opacity: 0;
+            pointer-events: none;
+            transition: opacity 0.3s;
+        }
+
+        .pause-overlay.active {
+            opacity: 1;
+            pointer-events: all;
+        }
+
+        .pause-overlay h2 {
+            font-size: 2rem;
+            margin-bottom: 20px;
+            color: white;
+        }
+
+        @media (max-width: 600px) {
+            h1 {
+                font-size: 2rem;
+            }
+
+            .header {
+                flex-direction: column;
+                align-items: flex-start;
+                gap: 10px;
+            }
+
+            .game-container {
+                height: 300px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="header">
+        <h1>Jumping Cube</h1>
+        <div class="scores">
+            <div class="score-box">
+                <div class="score-title">Score</div>
+                <div class="score-value" id="score">0</div>
+            </div>
+            <div class="score-box">
+                <div class="score-title">Best</div>
+                <div class="score-value" id="best-score">0</div>
+            </div>
+        </div>
+    </div>
+
+    <div class="controls">
+        <a href="../index.html"><button id="back-btn">Back to Website</button></a>
+        <button id="new-game-btn">New Game</button>
+        <button id="pause-btn">Pause</button>
+        <button id="instructions-btn">How to Play</button>
+    </div>
+
+    <div class="game-container">
+        <canvas id="game-canvas"></canvas>
+        <div class="game-over" id="game-over">
+            <h2>Game Over!</h2>
+            <button id="try-again-btn">Try Again</button>
+        </div>
+        <div class="pause-overlay" id="pause-overlay">
+            <h2>Game Paused</h2>
+            <button id="resume-btn">Resume</button>
+        </div>
+    </div>
+
+    <div class="overlay" id="instructions-overlay">
+        <div class="instructions">
+            <button class="close-btn" id="close-instructions-btn">&times;</button>
+            <h2>How to Play Jumping Cube</h2>
+            <div id="desktop-instructions">
+                <p><strong>Desktop Controls:</strong></p>
+                <ul>
+                    <li>Press <strong>SPACEBAR</strong> to jump</li>
+                    <li>Hold SPACEBAR longer for higher jumps</li>
+                    <li>Avoid obstacles on platforms</li>
+                    <li>Collect yellow circles for bonus points</li>
+                    <li>The game gets faster as you progress</li>
+                    <li>Press P to pause or click Pause button</li>
+                </ul>
+            </div>
+            <div id="mobile-instructions">
+                <p><strong>Mobile Controls:</strong></p>
+                <ul>
+                    <li><strong>Tap anywhere</strong> to jump</li>
+                    <li>Longer taps = higher jumps</li>
+                    <li>Avoid obstacles on platforms</li>
+                    <li>Collect yellow circles for bonus points</li>
+                    <li>The game gets faster as you progress</li>
+                    <li>Tap Pause button to pause</li>
+                </ul>
+            </div>
+            <p><strong>Tips:</strong></p>
+            <ul>
+                <li>Time your jumps carefully for longer platforms</li>
+                <li>Plan your landing to avoid obstacles</li>
+                <li>Your best score is saved automatically</li>
+                <li>Pause when you need a break</li>
+            </ul>
+        </div>
+    </div>
+    <footer style="display: flex; width: 100%; color:inherit;background-color:#0000003f; margin-top: auto;  padding: 1vh; align-items: center; justify-content: space-between;"
+    >
+           <p> <a href="https://markohio.github.io/DeMark-2.0/terms and condition.html">Terms And Conditions</a></p> 
+           <p> <a href="https://markohio.github.io/Portfolio-/">Designed by: 
+               Mark Ohio
+           </a></p> 
+        </footer>
+    <!-- Sound element - replace src with your audio file -->
+    <audio id="jump-sound" src="" preload="auto"></audio>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            // Game elements
+            const canvas = document.getElementById('game-canvas');
+            const ctx = canvas.getContext('2d');
+            const scoreDisplay = document.getElementById('score');
+            const bestScoreDisplay = document.getElementById('best-score');
+            const gameOverScreen = document.getElementById('game-over');
+            const tryAgainBtn = document.getElementById('try-again-btn');
+            const newGameBtn = document.getElementById('new-game-btn');
+            const backBtn = document.getElementById('back-btn');
+            const pauseBtn = document.getElementById('pause-btn');
+            const resumeBtn = document.getElementById('resume-btn');
+            const pauseOverlay = document.getElementById('pause-overlay');
+            const jumpSound = document.getElementById('jump-sound');
+            
+            // Instruction elements
+            const instructionsBtn = document.getElementById('instructions-btn');
+            const instructionsOverlay = document.getElementById('instructions-overlay');
+            const closeInstructionsBtn = document.getElementById('close-instructions-btn');
+            const desktopInstructions = document.getElementById('desktop-instructions');
+            const mobileInstructions = document.getElementById('mobile-instructions');
+            
+            // Game settings
+            const cubeSize = 30;
+            const initialSpeed = 3;
+            let gameSpeed = initialSpeed;
+            const speedIncreaseFactor = 1.0005;
+            const gravity = 0.4;
+            const jumpForce = 10;
+            const maxJumpForce = 18;
+            const platformHeight = 20;
+            const minPlatformWidth = 100;
+            const maxPlatformWidth = 250;
+            const minPlatformGap = 150;
+            const maxPlatformGap = 250;
+            const collectibleRadius = 15;
+            
+            // Game state
+            let cube = {
+                x: 100,
+                y: 200,
+                width: cubeSize,
+                height: cubeSize,
+                velocityY: 0,
+                isJumping: false,
+                jumpPower: 0,
+                squash: 0
+            };
+            
+            let platforms = [];
+            let collectibles = [];
+            let score = 0;
+            let bestScore = localStorage.getItem('cube-best-score') || 0;
+            let isGameOver = false;
+            let isPaused = false;
+            let animationId;
+            let lastFrameTime = 0;
+            let isChargingJump = false;
+            let chargeStartTime = 0;
+            
+            // Initialize the game
+            function initGame() {
+                // Set canvas size
+                resizeCanvas();
+                
+                // Reset game state
+                cube = {
+                    x: 100,
+                    y: 200,
+                    width: cubeSize,
+                    height: cubeSize,
+                    velocityY: 0,
+                    isJumping: false,
+                    jumpPower: 0,
+                    squash: 0
+                };
+                
+                platforms = [];
+                collectibles = [];
+                score = 0;
+                gameSpeed = initialSpeed;
+                isGameOver = false;
+                isPaused = false;
+                
+                // Create initial platforms
+                createInitialPlatforms();
+                
+                // Update displays
+                scoreDisplay.textContent = score;
+                bestScoreDisplay.textContent = bestScore;
+                
+                // Hide overlays
+                gameOverScreen.classList.remove('active');
+                pauseOverlay.classList.remove('active');
+                
+                // Start game loop
+                if (animationId) cancelAnimationFrame(animationId);
+                lastFrameTime = performance.now();
+                gameLoop(lastFrameTime);
+            }
+            
+            // Resize canvas
+            function resizeCanvas() {
+                const maxWidth = Math.min(500, window.innerWidth - 40);
+                canvas.width = maxWidth;
+                canvas.height = 400;
+            }
+            
+            // Create initial platforms
+            function createInitialPlatforms() {
+                // Starting platform (wider to allow for jump charging)
+                platforms.push({
+                    x: 0,
+                    y: canvas.height - 50,
+                    width: 300,
+                    height: platformHeight
+                });
+                
+                // Add some platforms to start with (closer together)
+                for (let i = 0; i < 5; i++) {
+                    createPlatform();
+                }
+            }
+            
+            // Create a new platform
+            function createPlatform() {
+                const lastPlatform = platforms[platforms.length - 1];
+                const width = randomBetween(minPlatformWidth, maxPlatformWidth);
+                
+                // Calculate gap - smaller gaps at beginning
+                let gap = randomBetween(minPlatformGap, maxPlatformGap);
+                if (score < 50) gap *= 0.7; // Make gaps smaller in early game
+                
+                const x = lastPlatform.x + lastPlatform.width + gap;
+                const y = randomBetween(canvas.height * 0.5, canvas.height - 50);
+                
+                // Make platforms wider if they have a gap after them
+                const nextGap = randomBetween(minPlatformGap, maxPlatformGap);
+                const platformWidth = nextGap > 200 ? width * 1.5 : width;
+                
+                const platform = {
+                    x: x,
+                    y: y,
+                    width: platformWidth,
+                    height: platformHeight,
+                    hasObstacle: platformWidth > 120 && Math.random() > 0.7
+                };
+                
+                platforms.push(platform);
+                
+                // Sometimes add a collectible between platforms
+                if (Math.random() > 0.6) {
+                    const prevPlatform = platforms[platforms.length - 2];
+                    const collectibleX = prevPlatform.x + prevPlatform.width + 
+                                       (platform.x - (prevPlatform.x + prevPlatform.width)) / 2;
+                    const collectibleY = randomBetween(canvas.height * 0.3, canvas.height * 0.7);
+                    
+                    collectibles.push({
+                        x: collectibleX,
+                        y: collectibleY,
+                        radius: collectibleRadius
+                    });
+                }
+            }
+            
+            // Game loop
+            function gameLoop(timestamp) {
+                if (isPaused || isGameOver) return;
+                
+                const deltaTime = timestamp - lastFrameTime;
+                lastFrameTime = timestamp;
+                
+                // Clear canvas
+                ctx.clearRect(0, 0, canvas.width, canvas.height);
+                
+                // Update game state
+                update(deltaTime);
+                
+                // Draw everything
+                draw();
+                
+                // Increase game speed
+                gameSpeed *= speedIncreaseFactor;
+                
+                // Request next frame
+                animationId = requestAnimationFrame(gameLoop);
+            }
+            
+            // Update game state
+            function update(deltaTime) {
+                // Apply gravity
+                cube.velocityY += gravity;
+                cube.y += cube.velocityY;
+                
+                // Apply squash effect when landing
+                if (cube.squash > 0) {
+                    cube.squash -= 0.1;
+                    if (cube.squash < 0) cube.squash = 0;
+                }
+                
+                // Check for platform collisions
+                let onPlatform = false;
+                for (const platform of platforms) {
+                    if (
+                        cube.x + cube.width > platform.x &&
+                        cube.x < platform.x + platform.width &&
+                        cube.y + cube.height >= platform.y &&
+                        cube.y + cube.height <= platform.y + platform.height + 10 &&
+                        cube.velocityY > 0
+                    ) {
+                        // Check if hitting an obstacle
+                        if (platform.hasObstacle) {
+                            const obstacleX = platform.x + platform.width / 2;
+                            const obstacleWidth = 20;
+                            
+                            if (
+                                cube.x + cube.width > obstacleX - obstacleWidth / 2 &&
+                                cube.x < obstacleX + obstacleWidth / 2
+                            ) {
+                                gameOver();
+                                return;
+                            }
+                        }
+                        
+                        // Land on platform
+                        cube.y = platform.y - cube.height;
+                        cube.velocityY = 0;
+                        cube.isJumping = false;
+                        cube.squash = 0.3; // Squash effect
+                        onPlatform = true;
+                    }
+                }
+                
+                // Check for collectible collisions
+                for (let i = collectibles.length - 1; i >= 0; i--) {
+                    const collectible = collectibles[i];
+                    const distX = (cube.x + cube.width / 2) - collectible.x;
+                    const distY = (cube.y + cube.height / 2) - collectible.y;
+                    const distance = Math.sqrt(distX * distX + distY * distY);
+                    
+                    if (distance < cube.width / 2 + collectible.radius) {
+                        // Collect the item
+                        collectibles.splice(i, 1);
+                        score += 10;
+                        scoreDisplay.textContent = score;
+                    }
+                }
+                
+                // Check if cube fell off the bottom
+                if (cube.y > canvas.height) {
+                    gameOver();
+                    return;
+                }
+                
+                // Move platforms (create illusion of cube moving forward)
+                for (let i = platforms.length - 1; i >= 0; i--) {
+                    platforms[i].x -= gameSpeed;
+                    
+                    // Remove platforms that are off screen
+                    if (platforms[i].x + platforms[i].width < 0) {
+                        platforms.splice(i, 1);
+                        score += 1;
+                        scoreDisplay.textContent = score;
+                        // Add new platform when one is removed
+                        createPlatform();
+                    }
+                }
+                
+                // Move collectibles
+                for (let i = collectibles.length - 1; i >= 0; i--) {
+                    collectibles[i].x -= gameSpeed;
+                    
+                    // Remove collectibles that are off screen
+                    if (collectibles[i].x + collectibleRadius < 0) {
+                        collectibles.splice(i, 1);
+                    }
+                }
+                
+                // Charge jump if holding space/tap
+                if (isChargingJump && !cube.isJumping) {
+                    const chargeTime = Date.now() - chargeStartTime;
+                    cube.jumpPower = Math.min(jumpForce + chargeTime / 100, maxJumpForce);
+                }
+            }
+            
+            // Draw everything with hardcoded colors
+            function draw() {
+                // Draw background
+                ctx.fillStyle = '#80DEEA';
+                ctx.fillRect(0, 0, canvas.width, canvas.height);
+                
+                // Draw platforms
+                ctx.fillStyle = '#5C6BC0';
+                for (const platform of platforms) {
+                    ctx.fillRect(platform.x, platform.y, platform.width, platform.height);
+                    
+                    // Draw obstacle if platform has one
+                    if (platform.hasObstacle) {
+                        ctx.fillStyle = '#EF5350';
+                        const obstacleWidth = 20;
+                        const obstacleHeight = 30;
+                        ctx.fillRect(
+                            platform.x + platform.width / 2 - obstacleWidth / 2,
+                            platform.y - obstacleHeight,
+                            obstacleWidth,
+                            obstacleHeight
+                        );
+                        ctx.fillStyle = '#5C6BC0';
+                    }
+                }
+                
+                // Draw collectibles
+                ctx.fillStyle = '#FFCA28';
+                for (const collectible of collectibles) {
+                    ctx.beginPath();
+                    ctx.arc(collectible.x, collectible.y, collectible.radius, 0, Math.PI * 2);
+                    ctx.fill();
+                }
+                
+                // Draw cube with squash effect
+                ctx.fillStyle = '#4285F4';
+                const squashHeight = cube.height * (1 - cube.squash);
+                const squashWidth = cube.width * (1 + cube.squash);
+                ctx.save();
+                ctx.translate(cube.x + cube.width / 2, cube.y + cube.height / 2);
+                ctx.scale(1 + cube.squash, 1 - cube.squash);
+                ctx.fillRect(-cube.width / 2, -cube.height / 2, cube.width, cube.height);
+                ctx.restore();
+            }
+            
+            // Jump function
+            function jump() {
+                if (!cube.isJumping) {
+                    cube.isJumping = true;
+                    cube.velocityY = -cube.jumpPower;
+                    cube.jumpPower = 0;
+                    
+                    // Play jump sound if available
+                    if (jumpSound.src) {
+                        jumpSound.currentTime = 0;
+                        jumpSound.play().catch(e => console.log("Audio play failed:", e));
+                    }
+                }
+            }
+            
+            // Game over
+            function gameOver() {
+                isGameOver = true;
+                cancelAnimationFrame(animationId);
+                
+                // Update best score if needed
+                if (score > bestScore) {
+                    bestScore = score;
+                    bestScoreDisplay.textContent = bestScore;
+                    localStorage.setItem('cube-best-score', bestScore);
+                }
+                
+                // Show game over screen
+                gameOverScreen.classList.add('active');
+            }
+            
+            // Pause game
+            function pauseGame() {
+                isPaused = true;
+                pauseOverlay.classList.add('active');
+                cancelAnimationFrame(animationId);
+            }
+            
+            // Resume game
+            function resumeGame() {
+                isPaused = false;
+                pauseOverlay.classList.remove('active');
+                lastFrameTime = performance.now();
+                gameLoop(lastFrameTime);
+            }
+            
+            // Event listeners for keyboard controls
+            document.addEventListener('keydown', (e) => {
+                if (e.code === 'Space') {
+                    e.preventDefault();
+                    if (!cube.isJumping && !isPaused) {
+                        isChargingJump = true;
+                        chargeStartTime = Date.now();
+                        cube.jumpPower = jumpForce;
+                    }
+                }
+                
+                // Pause with P key
+                if (e.code === 'KeyP') {
+                    e.preventDefault();
+                    if (isPaused) {
+                        resumeGame();
+                    } else {
+                        pauseGame();
+                    }
+                }
+            });
+            
+            document.addEventListener('keyup', (e) => {
+                if (e.code === 'Space') {
+                    e.preventDefault();
+                    if (isChargingJump && !isPaused) {
+                        isChargingJump = false;
+                        jump();
+                    }
+                }
+            });
+            
+            // Touch controls for mobile
+            canvas.addEventListener('touchstart', (e) => {
+                e.preventDefault();
+                if (!cube.isJumping && !isPaused) {
+                    isChargingJump = true;
+                    chargeStartTime = Date.now();
+                    cube.jumpPower = jumpForce;
+                }
+            }, { passive: false });
+            
+            canvas.addEventListener('touchend', (e) => {
+                e.preventDefault();
+                if (isChargingJump && !isPaused) {
+                    isChargingJump = false;
+                    jump();
+                }
+            }, { passive: false });
+            
+            // Game control buttons
+            newGameBtn.addEventListener('click', initGame);
+            tryAgainBtn.addEventListener('click', initGame);
+            pauseBtn.addEventListener('click', pauseGame);
+            resumeBtn.addEventListener('click', resumeGame);
+            
+            // Back button - you can replace the href with your website URL
+            backBtn.addEventListener('click', () => {
+                window.location.href = 'https://your-website.com';
+            });
+            
+            // Instructions
+            instructionsBtn.addEventListener('click', () => {
+                instructionsOverlay.classList.add('active');
+                
+                // Show appropriate instructions based on device
+                if (window.innerWidth >= 600) {
+                    desktopInstructions.style.display = 'block';
+                    mobileInstructions.style.display = 'none';
+                } else {
+                    desktopInstructions.style.display = 'none';
+                    mobileInstructions.style.display = 'block';
+                }
+            });
+            
+            closeInstructionsBtn.addEventListener('click', () => {
+                instructionsOverlay.classList.remove('active');
+            });
+            
+            instructionsOverlay.addEventListener('click', (e) => {
+                if (e.target === instructionsOverlay) {
+                    instructionsOverlay.classList.remove('active');
+                }
+            });
+            
+            // Handle window resize
+            window.addEventListener('resize', () => {
+                resizeCanvas();
+                
+                if (instructionsOverlay.classList.contains('active')) {
+                    if (window.innerWidth >= 600) {
+                        desktopInstructions.style.display = 'block';
+                        mobileInstructions.style.display = 'none';
+                    } else {
+                        desktopInstructions.style.display = 'none';
+                        mobileInstructions.style.display = 'block';
+                    }
+                }
+            });
+            
+            // Helper function
+            function randomBetween(min, max) {
+                return min + Math.random() * (max - min);
+            }
+            
+            // Start the game
+            initGame();
+        });
+    </script>
+</body>
+</html>

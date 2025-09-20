@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Tic-Tac-Toe</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            margin-top: 50px;
+        }
+        .board {
+            display: grid;
+            grid-template-columns: repeat(3, 100px);
+            grid-gap: 5px;
+            margin: 20px 0;
+        }
+        .cell {
+            width: 100px;
+            height: 100px;
+            background-color: #f0f0f0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            font-size: 48px;
+            cursor: pointer;
+        }
+        .cell:hover {
+            background-color: #e0e0e0;
+        }
+        #status {
+            font-size: 24px;
+            margin-bottom: 20px;
+        }
+        button {
+            padding: 10px 20px;
+            font-size: 16px;
+            cursor: pointer;
+        }
+    </style>
+</head>
+<body>
+    <h1>Tic-Tac-Toe</h1>
+    <div id="status">Player X's turn</div>
+    <div class="board" id="board"></div>
+    <button id="reset">Reset Game</button>
+    <a href="../index.html"><button id="back-btn">Back to Website</button></a>
+    <footer style="display: flex; width: 100%; color:inherit;background-color:#0000003f; margin-top: auto;  padding: 1vh; align-items: center; justify-content: space-between;"
+    >
+           <p> <a href="https://markohio.github.io/DeMark-2.0/terms and condition.html">Terms And Conditions</a></p> 
+           <p> <a href="https://markohio.github.io/Portfolio-/">Designed by: 
+               Mark Ohio
+           </a></p> 
+        </footer>
+
+    <script>
+        const board = document.getElementById('board');
+        const status = document.getElementById('status');
+        const resetButton = document.getElementById('reset');
+        
+        let currentPlayer = 'X';
+        let gameBoard = ['', '', '', '', '', '', '', '', ''];
+        let gameActive = true;
+        
+        // Create board cells
+        for (let i = 0; i < 9; i++) {
+            const cell = document.createElement('div');
+            cell.classList.add('cell');
+            cell.setAttribute('data-index', i);
+            cell.addEventListener('click', handleCellClick);
+            board.appendChild(cell);
+        }
+        
+        function handleCellClick(e) {
+            const index = e.target.getAttribute('data-index');
+            
+            if (gameBoard[index] !== '' || !gameActive) return;
+            
+            gameBoard[index] = currentPlayer;
+            e.target.textContent = currentPlayer;
+            
+            if (checkWinner()) {
+                status.textContent = `Player ${currentPlayer} wins!`;
+                gameActive = false;
+                return;
+            }
+            
+            if (gameBoard.every(cell => cell !== '')) {
+                status.textContent = "Game ended in a draw!";
+                gameActive = false;
+                return;
+            }
+            
+            currentPlayer = currentPlayer === 'X' ? 'O' : 'X';
+            status.textContent = `Player ${currentPlayer}'s turn`;
+        }
+        
+        function checkWinner() {
+            const winPatterns = [
+                [0, 1, 2], [3, 4, 5], [6, 7, 8], // rows
+                [0, 3, 6], [1, 4, 7], [2, 5, 8], // columns
+                [0, 4, 8], [2, 4, 6]             // diagonals
+            ];
+            
+            return winPatterns.some(pattern => {
+                const [a, b, c] = pattern;
+                return gameBoard[a] !== '' && 
+                       gameBoard[a] === gameBoard[b] && 
+                       gameBoard[a] === gameBoard[c];
+            });
+        }
+        
+        resetButton.addEventListener('click', () => {
+            gameBoard = ['', '', '', '', '', '', '', '', ''];
+            gameActive = true;
+            currentPlayer = 'X';
+            status.textContent = `Player ${currentPlayer}'s turn`;
+            document.querySelectorAll('.cell').forEach(cell => {
+                cell.textContent = '';
+            });
+        });
+    </script>
+</body>
+</html>

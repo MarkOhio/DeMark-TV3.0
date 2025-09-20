@@ -1,0 +1,826 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Memory Card Game</title>
+    <style>
+        :root {
+            --card-back-color: #5C6BC0;
+            --card-front-color: #ffffff;
+            --card-border: #333;
+            --text-color: #333;
+            --button-bg: #333;
+            --button-hover: #444;
+            --background: #f5f5f5;
+            --match-color: #4CAF50;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: Arial, sans-serif;
+        }
+
+        body {
+            background-color: var(--background);
+            color: var(--text-color);
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            padding: 20px;
+            overflow-x: hidden;
+        }
+
+        .header {
+            width: 100%;
+            max-width: 800px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 20px;
+            flex-wrap: wrap;
+            gap: 10px;
+        }
+
+        h1 {
+            font-size: 2rem;
+            color: var(--text-color);
+            text-align: center;
+            width: 100%;
+        }
+
+        .scores {
+            display: flex;
+            gap: 10px;
+            flex-wrap: wrap;
+            justify-content: center;
+            width: 100%;
+        }
+
+        .score-box {
+            background: var(--button-bg);
+            color: white;
+            padding: 8px 12px;
+            border-radius: 5px;
+            text-align: center;
+            min-width: 70px;
+            font-size: 0.9rem;
+        }
+
+        .score-title {
+            font-size: 0.7rem;
+            text-transform: uppercase;
+        }
+
+        .score-value {
+            font-size: 1rem;
+            font-weight: bold;
+        }
+
+        .controls {
+            width: 100%;
+            max-width: 800px;
+            display: flex;
+            flex-wrap: wrap;
+            gap: 8px;
+            margin-bottom: 15px;
+            justify-content: center;
+        }
+
+        button {
+            background: var(--button-bg);
+            color: white;
+            border: none;
+            border-radius: 5px;
+            padding: 8px 12px;
+            font-size: 0.9rem;
+            cursor: pointer;
+            transition: all 0.2s;
+            flex-shrink: 0;
+        }
+
+        button:hover:not(:disabled) {
+            background: var(--button-hover);
+        }
+
+        button:disabled {
+            opacity: 0.5;
+            cursor: not-allowed;
+        }
+
+        .dropdown {
+            position: relative;
+            display: inline-block;
+        }
+
+        .dropdown-btn {
+            background: var(--button-bg);
+            color: white;
+            padding: 8px 30px 8px 12px;
+            border-radius: 5px;
+            cursor: pointer;
+            position: relative;
+            min-width: 120px;
+            text-align: left;
+        }
+
+        .dropdown-btn::after {
+            content: "▼";
+            position: absolute;
+            right: 8px;
+            top: 50%;
+            transform: translateY(-50%);
+            font-size: 0.7rem;
+        }
+
+        .dropdown-content {
+            display: none;
+            position: absolute;
+            background-color: var(--button-bg);
+            min-width: 120px;
+            box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+            z-index: 1;
+            border-radius: 0 0 5px 5px;
+            overflow: hidden;
+            top: 100%;
+            left: 0;
+        }
+
+        .dropdown-content button {
+            width: 100%;
+            text-align: left;
+            border-radius: 0;
+            background: var(--button-bg);
+            border-bottom: 1px solid rgba(255,255,255,0.1);
+        }
+
+        .dropdown-content button:hover {
+            background: var(--button-hover);
+        }
+
+        .dropdown.active .dropdown-content {
+            display: block;
+        }
+
+        .dropdown.active .dropdown-btn {
+            border-radius: 5px 5px 0 0;
+        }
+
+        .button-row {
+            display: flex;
+            gap: 8px;
+            flex-wrap: wrap;
+            justify-content: center;
+            width: 100%;
+        }
+
+        .game-container {
+            position: relative;
+            width: 100%;
+            max-width: 800px;
+            margin-bottom: 20px;
+            display: flex;
+            justify-content: center;
+            overflow: auto;
+        }
+
+        .memory-board {
+            display: grid;
+            grid-gap: 8px;
+            perspective: 1000px;
+            padding: 5px;
+            width: fit-content;
+            max-width: 100%;
+        }
+
+        .memory-card {
+            width: 60px;
+            height: 60px;
+            position: relative;
+            transform-style: preserve-3d;
+            transition: transform 0.5s;
+            cursor: pointer;
+            background: transparent;
+            border: none;
+        }
+
+        @media (min-width: 400px) {
+            .memory-card {
+                width: 70px;
+                height: 70px;
+            }
+        }
+
+        @media (min-width: 768px) {
+            .memory-card {
+                width: 80px;
+                height: 80px;
+            }
+            
+            .header {
+                flex-direction: row;
+            }
+            
+            h1 {
+                font-size: 2.5rem;
+                width: auto;
+            }
+            
+            .scores {
+                justify-content: flex-end;
+                width: auto;
+            }
+            
+            .controls {
+                justify-content: space-between;
+            }
+            
+            .button-row {
+                justify-content: flex-start;
+                width: auto;
+            }
+        }
+
+        .memory-card.flip {
+            transform: rotateY(180deg);
+        }
+
+        .memory-card.matched {
+            cursor: default;
+        }
+
+        .card-face {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            backface-visibility: hidden;
+            border-radius: 5px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            font-size: 1.8rem;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+            top: 0;
+            left: 0;
+        }
+
+        @media (min-width: 400px) {
+            .card-face {
+                font-size: 2.2rem;
+            }
+        }
+
+        @media (min-width: 768px) {
+            .card-face {
+                font-size: 2.5rem;
+            }
+        }
+
+        .card-front {
+            background-color: var(--card-front-color);
+            border: 2px solid var(--card-border);
+            transform: rotateY(180deg);
+        }
+
+        .card-back {
+            background-color: var(--card-back-color);
+            background-image: linear-gradient(45deg, rgba(255,255,255,0.1) 25%, transparent 25%, transparent 50%, rgba(255,255,255,0.1) 50%, rgba(255,255,255,0.1) 75%, transparent 75%, transparent);
+            background-size: 20px 20px;
+            border: 2px solid var(--card-border);
+        }
+
+        .card-back::after {
+            content: "?";
+            color: white;
+            font-size: 1.5rem;
+        }
+
+        .matched .card-front {
+            background-color: var(--match-color);
+            color: white;
+        }
+
+        .overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.7);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            z-index: 100;
+            opacity: 0;
+            pointer-events: none;
+            transition: opacity 0.3s;
+        }
+
+        .overlay.active {
+            opacity: 1;
+            pointer-events: all;
+        }
+
+        .instructions {
+            background-color: var(--button-bg);
+            padding: 20px;
+            border-radius: 10px;
+            max-width: 500px;
+            width: 90%;
+            max-height: 80vh;
+            overflow-y: auto;
+            position: relative;
+        }
+
+        .instructions h2 {
+            margin-bottom: 15px;
+            color: white;
+        }
+
+        .instructions p {
+            margin-bottom: 10px;
+            line-height: 1.5;
+            color: white;
+        }
+
+        .instructions ul {
+            margin-bottom: 15px;
+            padding-left: 20px;
+            color: white;
+        }
+
+        .instructions li {
+            margin-bottom: 5px;
+        }
+
+        .close-btn {
+            position: absolute;
+            top: 10px;
+            right: 10px;
+            background: none;
+            border: none;
+            font-size: 1.5rem;
+            color: white;
+            cursor: pointer;
+            padding: 5px;
+        }
+
+        .game-over {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.7);
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            z-index: 10;
+            opacity: 0;
+            pointer-events: none;
+            transition: opacity 0.3s;
+        }
+
+        .game-over.active {
+            opacity: 1;
+            pointer-events: all;
+        }
+
+        .game-over h2 {
+            font-size: 1.8rem;
+            margin-bottom: 20px;
+            color: white;
+            text-align: center;
+        }
+
+        @media (max-width: 600px) {
+            .header {
+                flex-direction: column;
+                align-items: center;
+                gap: 10px;
+            }
+
+            .controls {
+                flex-direction: column;
+                align-items: center;
+                gap: 8px;
+            }
+
+            .button-row {
+                justify-content: center;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="header">
+        <h1>Memory Card Game</h1>
+        <div class="scores">
+            <div class="score-box">
+                <div class="score-title">Moves</div>
+                <div class="score-value" id="moves">0</div>
+            </div>
+            <div class="score-box">
+                <div class="score-title">Matches</div>
+                <div class="score-value" id="matches">0</div>
+            </div>
+            <div class="score-box">
+                <div class="score-title">Best</div>
+                <div class="score-value" id="best-score">0</div>
+            </div>
+        </div>
+    </div>
+
+    <div class="controls">
+        <div class="dropdown" id="difficulty-dropdown">
+            <button class="dropdown-btn" id="difficulty-btn">Easy (4×4)</button>
+            <div class="dropdown-content">
+                <button id="easy-btn">Easy (4×4)</button>
+                <button id="medium-btn">Medium (6×6)</button>
+                <button id="hard-btn">Hard (8×8)</button>
+            </div>
+        </div>
+        <div class="button-row">
+            <a href="../index.html"><button id="back-btn">Back to Website</button></a>
+            <button id="hint-btn" disabled>Hint (-10)</button>
+            <button id="new-game-btn">New Game</button>
+            <button id="instructions-btn">How to Play</button>
+        </div>
+    </div>
+
+    <div class="game-container">
+        <div class="memory-board" id="memory-board"></div>
+        <div class="game-over" id="game-over">
+            <h2>You Won!</h2>
+            <div class="score-box" style="margin-bottom: 20px;">
+                <div class="score-title">Total Moves</div>
+                <div class="score-value" id="final-moves">0</div>
+            </div>
+            <button id="try-again-btn">Play Again</button>
+        </div>
+    </div>
+
+    <div class="overlay" id="instructions-overlay">
+        <div class="instructions">
+            <button class="close-btn" id="close-instructions-btn">&times;</button>
+            <h2>How to Play Memory Card Game</h2>
+            <p><strong>Game Rules:</strong></p>
+            <ul>
+                <li>Flip two cards at a time to find matching pairs</li>
+                <li>When you find a match, the cards stay flipped</li>
+                <li>Try to find all pairs with the fewest moves</li>
+                <li>Use the Hint button (costs 10 points) to briefly see all cards</li>
+            </ul>
+            <p><strong>Difficulty Levels:</strong></p>
+            <ul>
+                <li><strong>Easy:</strong> 4×4 grid (8 pairs) - 7 second preview</li>
+                <li><strong>Medium:</strong> 6×6 grid (18 pairs) - 5 second preview</li>
+                <li><strong>Hard:</strong> 8×8 grid (32 pairs) - 3 second preview</li>
+            </ul>
+            <p><strong>Tips:</strong></p>
+            <ul>
+                <li>Remember the positions of cards as you flip them</li>
+                <li>Plan your moves to minimize flipping the same cards multiple times</li>
+                <li>Use hints strategically when you're stuck</li>
+                <li>Your best score (fewest moves) is saved for each difficulty</li>
+            </ul>
+        </div>
+    </div>
+    <footer style="display: flex; width: 100%; color:inherit;background-color:#0000003f; margin-top: auto;  padding: 1vh; align-items: center; justify-content: space-between;"
+    >
+           <p> <a href="https://markohio.github.io/DeMark-2.0/terms and condition.html">Terms And Conditions</a></p> 
+           <p> <a href="https://markohio.github.io/Portfolio-/">Designed by: 
+               Mark Ohio
+           </a></p> 
+        </footer>
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            // Game elements
+            const memoryBoard = document.getElementById('memory-board');
+            const movesDisplay = document.getElementById('moves');
+            const matchesDisplay = document.getElementById('matches');
+            const bestScoreDisplay = document.getElementById('best-score');
+            const finalMovesDisplay = document.getElementById('final-moves');
+            const gameOverScreen = document.getElementById('game-over');
+            const tryAgainBtn = document.getElementById('try-again-btn');
+            const newGameBtn = document.getElementById('new-game-btn');
+            const backBtn = document.getElementById('back-btn');
+            const hintBtn = document.getElementById('hint-btn');
+            const easyBtn = document.getElementById('easy-btn');
+            const mediumBtn = document.getElementById('medium-btn');
+            const hardBtn = document.getElementById('hard-btn');
+            const difficultyBtn = document.getElementById('difficulty-btn');
+            const difficultyDropdown = document.getElementById('difficulty-dropdown');
+            const instructionsBtn = document.getElementById('instructions-btn');
+            const instructionsOverlay = document.getElementById('instructions-overlay');
+            const closeInstructionsBtn = document.getElementById('close-instructions-btn');
+            
+            // Game settings
+            const animalEmojis = ['🐶', '🐱', '🐭', '🐹', '🐰', '🦊', '🐻', '🐼', 
+                                 '🦁', '🐮', '🐷', '🐸', '🐵', '🐔', '🐧', '🐦',
+                                 '🐤', '🦆', '🦅', '🦉', '🦇', '🐺', '🐗', '🐴',
+                                 '🦄', '🐝', '🐛', '🦋', '🐌', '🐞', '🐜', '🦟'];
+            let cardValues = [];
+            let cards = [];
+            let flippedCards = [];
+            let matchedPairs = 0;
+            let moves = 0;
+            let bestScores = {
+                easy: localStorage.getItem('memory-best-easy') || 0,
+                medium: localStorage.getItem('memory-best-medium') || 0,
+                hard: localStorage.getItem('memory-best-hard') || 0
+            };
+            let currentDifficulty = 'easy';
+            let boardSize = 4;
+            let totalPairs = 8;
+            let lockBoard = false;
+            let hintActive = false;
+            let previewTimeout;
+            
+            // Initialize the game
+            function initGame() {
+                // Clear the board
+                memoryBoard.innerHTML = '';
+                memoryBoard.style.gridTemplateColumns = `repeat(${boardSize}, 1fr)`;
+                
+                // Reset game state
+                cards = [];
+                flippedCards = [];
+                matchedPairs = 0;
+                moves = 0;
+                lockBoard = true; // Lock board during preview
+                
+                // Update displays
+                movesDisplay.textContent = moves;
+                matchesDisplay.textContent = matchedPairs;
+                updateBestScoreDisplay();
+                
+                // Hide game over screen
+                gameOverScreen.classList.remove('active');
+                
+                // Create card values
+                createCardValues();
+                
+                // Create cards
+                createCards();
+                
+                // Show initial preview
+                showInitialPreview();
+            }
+            
+            // Create card values based on difficulty
+            function createCardValues() {
+                const pairsNeeded = boardSize * boardSize / 2;
+                cardValues = animalEmojis.slice(0, pairsNeeded);
+                cardValues = [...cardValues, ...cardValues]; // Duplicate for pairs
+                cardValues = shuffleArray(cardValues);
+            }
+            
+            // Create card elements
+            function createCards() {
+                cardValues.forEach((value, index) => {
+                    const card = document.createElement('button');
+                    card.classList.add('memory-card');
+                    card.dataset.index = index;
+                    card.dataset.value = value;
+                    
+                    card.innerHTML = `
+                        <div class="card-face card-back"></div>
+                        <div class="card-face card-front">${value}</div>
+                    `;
+                    
+                    card.addEventListener('click', flipCard);
+                    memoryBoard.appendChild(card);
+                    cards.push(card);
+                });
+            }
+            
+            // Show initial preview of all cards
+            function showInitialPreview() {
+                // Flip all cards
+                cards.forEach(card => {
+                    card.classList.add('flip');
+                });
+                
+                // Set preview time based on difficulty
+                let previewTime = 7000; // Default to easy
+                if (currentDifficulty === 'medium') previewTime = 5000;
+                if (currentDifficulty === 'hard') previewTime = 3000;
+                
+                // Flip back after delay
+                previewTimeout = setTimeout(() => {
+                    cards.forEach(card => {
+                        card.classList.remove('flip');
+                    });
+                    lockBoard = false; // Unlock the board
+                }, previewTime);
+            }
+            
+            // Flip card function
+            function flipCard() {
+                if (lockBoard || hintActive) return;
+                if (this === flippedCards[0]) return;
+                if (this.classList.contains('matched')) return;
+                
+                this.classList.add('flip');
+                
+                if (!flippedCards.includes(this)) {
+                    flippedCards.push(this);
+                }
+                
+                if (flippedCards.length === 2) {
+                    lockBoard = true;
+                    moves++;
+                    movesDisplay.textContent = moves;
+                    checkForMatch();
+                }
+                
+                // Enable/disable hint button based on score
+                hintBtn.disabled = moves < 10;
+            }
+            
+            // Check for match
+            function checkForMatch() {
+                const [card1, card2] = flippedCards;
+                const isMatch = card1.dataset.value === card2.dataset.value;
+                
+                if (isMatch) {
+                    card1.classList.add('matched');
+                    card2.classList.add('matched');
+                    matchedPairs++;
+                    matchesDisplay.textContent = matchedPairs;
+                    
+                    if (matchedPairs === totalPairs) {
+                        setTimeout(() => {
+                            gameOver();
+                        }, 500);
+                    }
+                    
+                    resetBoard();
+                } else {
+                    setTimeout(() => {
+                        card1.classList.remove('flip');
+                        card2.classList.remove('flip');
+                        resetBoard();
+                    }, 1000);
+                }
+            }
+            
+            // Reset board after turn
+            function resetBoard() {
+                flippedCards = [];
+                lockBoard = false;
+            }
+            
+            // Game over
+            function gameOver() {
+                // Update best score if needed
+                if (bestScores[currentDifficulty] === 0 || moves < bestScores[currentDifficulty]) {
+                    bestScores[currentDifficulty] = moves;
+                    localStorage.setItem(`memory-best-${currentDifficulty}`, moves);
+                    updateBestScoreDisplay();
+                }
+                
+                // Show game over screen
+                finalMovesDisplay.textContent = moves;
+                gameOverScreen.classList.add('active');
+            }
+            
+            // Hint function
+            function showHint() {
+                if (moves < 10 || hintActive) return;
+                
+                hintActive = true;
+                hintBtn.disabled = true;
+                moves -= 10;
+                movesDisplay.textContent = moves;
+                
+                // Flip all cards temporarily
+                cards.forEach(card => {
+                    if (!card.classList.contains('matched')) {
+                        card.classList.add('flip');
+                    }
+                });
+                
+                // Flip back after delay
+                setTimeout(() => {
+                    cards.forEach(card => {
+                        if (!card.classList.contains('matched')) {
+                            card.classList.remove('flip');
+                        }
+                    });
+                    hintActive = false;
+                    hintBtn.disabled = moves < 10;
+                }, 2000);
+            }
+            
+            // Set difficulty
+            function setDifficulty(difficulty) {
+                currentDifficulty = difficulty;
+                
+                switch (difficulty) {
+                    case 'easy':
+                        boardSize = 4;
+                        totalPairs = 8;
+                        difficultyBtn.textContent = 'Easy (4×4)';
+                        break;
+                    case 'medium':
+                        boardSize = 6;
+                        totalPairs = 18;
+                        difficultyBtn.textContent = 'Medium (6×6)';
+                        break;
+                    case 'hard':
+                        boardSize = 8;
+                        totalPairs = 32;
+                        difficultyBtn.textContent = 'Hard (8×8)';
+                        break;
+                }
+                
+                // Close dropdown
+                difficultyDropdown.classList.remove('active');
+                
+                initGame();
+            }
+            
+            // Update best score display
+            function updateBestScoreDisplay() {
+                bestScoreDisplay.textContent = bestScores[currentDifficulty] || '0';
+            }
+            
+            // Helper function to shuffle array
+            function shuffleArray(array) {
+                const newArray = [...array];
+                for (let i = newArray.length - 1; i > 0; i--) {
+                    const j = Math.floor(Math.random() * (i + 1));
+                    [newArray[i], newArray[j]] = [newArray[j], newArray[i]];
+                }
+                return newArray;
+            }
+            
+            // Event listeners
+            newGameBtn.addEventListener('click', () => {
+                clearTimeout(previewTimeout);
+                initGame();
+            });
+            tryAgainBtn.addEventListener('click', () => {
+                clearTimeout(previewTimeout);
+                initGame();
+            });
+            hintBtn.addEventListener('click', showHint);
+            easyBtn.addEventListener('click', () => {
+                clearTimeout(previewTimeout);
+                setDifficulty('easy');
+            });
+            mediumBtn.addEventListener('click', () => {
+                clearTimeout(previewTimeout);
+                setDifficulty('medium');
+            });
+            hardBtn.addEventListener('click', () => {
+                clearTimeout(previewTimeout);
+                setDifficulty('hard');
+            });
+            
+            // Difficulty dropdown
+            difficultyBtn.addEventListener('click', (e) => {
+                e.stopPropagation();
+                difficultyDropdown.classList.toggle('active');
+            });
+            
+            // Close dropdown when clicking outside
+            document.addEventListener('click', () => {
+                difficultyDropdown.classList.remove('active');
+            });
+            
+            // Instructions button
+            instructionsBtn.addEventListener('click', (e) => {
+                e.stopPropagation();
+                instructionsOverlay.classList.add('active');
+            });
+            
+            // Close instructions
+            closeInstructionsBtn.addEventListener('click', () => {
+                instructionsOverlay.classList.remove('active');
+            });
+            
+            // Close instructions when clicking outside
+            instructionsOverlay.addEventListener('click', (e) => {
+                if (e.target === instructionsOverlay) {
+                    instructionsOverlay.classList.remove('active');
+                }
+            });
+            
+            // Back button - you can replace the href with your website URL
+            backBtn.addEventListener('click', () => {
+                window.location.href = 'https://your-website.com';
+            });
+            
+            // Start the game with default difficulty
+            setDifficulty('easy');
+        });
+    </script>
+</body>
+</html>
