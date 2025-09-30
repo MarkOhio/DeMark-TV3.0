@@ -1,0 +1,4182 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <!-- Google tag (gtag.js) -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-57N8LV35W4"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+
+      gtag('config', 'G-57N8LV35W4');
+    </script>
+
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>DeMark WhatsApp Television - Daily Entertainment, Comedy & working updates</title>
+    <link rel="shortcut icon" href="icon.png" type="image/x-icon">
+    <link rel="stylesheet" href="theme.css" />
+    <link rel="stylesheet" href="style.css" />
+    <link rel="stylesheet" href="loader.css" />
+    <script src="product-db.js"></script> 
+    <script src="script.js"></script>
+  </head>   
+  <!-- GENERAL STYLE -->
+  <style>
+    body {
+  background: rgb(15, 15, 15);
+}
+canvas#smokeCanvas {
+  position: fixed;
+  top: 0;
+  left: 0;
+  z-index: 9999;
+  pointer-events: none;
+  width: 100%;
+  height: 100%;
+}
+
+/* background-color: rgb(27, 27, 27); */
+
+.product-price {
+  padding: 10px;
+
+  background-color: #00000000;
+  border-radius: 4px;
+}
+
+.body1,
+.body2,
+.body3,
+.body4,
+.body5,
+.body6,
+.body-contact {
+  padding: 0;
+  margin: 7vh 5vw;
+  border-radius: 10px;
+  background-color: rgba(0, 0, 0, 0.534);
+  box-shadow: 10px 10px 50px rgb(65, 65, 65);
+  height: 75vh;
+  overflow: auto;
+  background: linear-gradient(
+    to bottom,
+    rgba(0, 0, 0, 0.534) 97%,
+    #111bf2 100%
+  );
+}
+.body-contact {
+  height: max-content;
+  margin: 0vh 5vw;
+}
+.header {
+  border-radius: 10px;
+}
+.header {
+  position: sticky;
+  top: 0;
+  bottom: 5vh;
+  z-index: 10000;
+  background: linear-gradient(to bottom, #111bf2 0%, rgba(0, 0, 0, 0.993) 30%);
+  box-shadow: 0 0 10px #7b82ff;
+}
+/* mobile Header */
+.ph-nav {
+  display: flex;
+  justify-content: space-between;
+  padding: 10px auto;
+}
+.ham {
+  margin: auto 0px;
+  padding: 0px 20px;
+}
+
+#logo {
+  padding: 0px 20px;
+  margin: auto 0px;
+}
+#logo a {
+  text-decoration: none;
+  display: flex;
+}
+#logo1 {
+  color: #0215a1;
+}
+#logo2 {
+  color: rgb(255, 194, 81);
+}
+/* mobile Header */
+
+/* nav bar */
+.navbar {
+  padding: 1vh 0px;
+}
+.list {
+  display: flex;
+  justify-content: center;
+  display: grid;
+  grid-auto-flow: column;
+  list-style-type: none;
+  column-gap: 4vh;
+  margin: auto;
+}
+
+nav {
+  position: relative;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.list li {
+  text-align: center;
+  position: relative;
+}
+
+.tooltip {
+  position: absolute;
+  bottom: -20px;
+  left: 50%;
+  transform: translateX(-50%);
+  font-size: 0.75rem;
+  background: #0215a1;
+  color: white;
+  padding: 2px 6px;
+  border-radius: 4px;
+  opacity: 0;
+  transition: opacity 0.2s ease;
+  white-space: nowrap;
+}
+
+.list li:hover .tooltip {
+  opacity: 1;
+}
+@media (max-width: 768px) {
+  #active .tooltip {
+    opacity: 1;
+    pointer-events: none;
+  }
+}
+.list a {
+  text-decoration: none;
+  color: white;
+}
+.list a:hover {
+  text-decoration: none;
+  color: #111bf2;
+}
+#active {
+  color: white;
+  filter: invert(38%) sepia(91%) saturate(1762%) hue-rotate(154deg);
+}
+.nav-icon {
+  width: 5vh;
+  height: 4vh;
+  filter: brightness(0) invert(1);
+  margin: 0;
+  padding: 0;
+}
+.nav-icon:hover {
+  filter: invert(38%) sepia(91%) saturate(1762%) hue-rotate(154deg);
+}
+
+.nav-icon {
+  position: relative; /* Essential for positioning the overlay relative to the image */
+  display: inline-block; /* Images are inline by default, but this can help with consistent sizing */
+  margin: 10px; /* Example spacing */
+  /* Ensure the image itself has a defined width/height if it's not set by content */
+  /* For example: width: 150px; height: 150px; object-fit: cover; */
+}
+
+/* nav bar end */
+
+/* hero section */
+.section1 {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 10px;
+  color: rgb(177, 177, 177);
+  width: 100%;
+  gap: 3vw;
+}
+.box {
+  padding: auto;
+  margin-top: 5vh;
+}
+.hero {
+  height: 50vh;
+  width: 25vw;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.hero-container {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+
+  max-width: 32vh;
+  border-radius: 0 0 16px 16px;
+}
+
+.hero-glow-text {
+  font-size: 15vh;
+  font-family: "Brush Script MT", cursive;
+  color: #030550;
+  text-shadow: 0 0 10px #333df6, 0 0 20px #333df6, 0 0 40px #333df6;
+  margin-bottom: -0px;
+  z-index: 230;
+}
+.hero-glow-text {
+  transform: rotate(-20deg);
+}
+
+.hero-card {
+  background: linear-gradient(145deg, #1c1c1c00, #26262600);
+  border-radius: 16px;
+  padding: 1rem;
+
+  box-shadow: 0 0 15px rgba(17, 27, 242, 0.2),
+    0 0 30px rgba(17, 27, 242, 0.1) inset;
+  backdrop-filter: blur(10px);
+  position: relative;
+  z-index: 1;
+  border: 1px solid #2f39ff;
+  width: 32vh;
+}
+
+.hero-card h2 {
+  font-size: 1.5rem;
+  color: #c6c9ff;
+  margin-bottom: 0.5rem;
+}
+
+.hero-card p {
+  color: #b4b7ff;
+  font-size: 0.9rem;
+  line-height: 1.5;
+}
+
+/* Optional: glowing accent on hover */
+.hero button:hover {
+  box-shadow: 0 0 25px #111bf2, 0 0 50px #111bf2;
+  transition: 0.3s ease;
+}
+
+#hero-btn {
+  background: #111bf2;
+  border: none;
+  padding: 10px 20px;
+  color: rgb(255, 255, 255);
+  font-size: 1em;
+  cursor: pointer;
+  float: right;
+  border-radius: 10px;
+}
+#hero-btn:hover {
+  background: linear-gradient(
+    to bottom,
+    #111bf2 0%,
+    rgba(0, 0, 0, 0) 10%,
+    rgba(0, 0, 0, 0) 90%,
+    #111bf2 100%
+  );
+}
+.hometxt {
+  width: 45vw;
+  float: right;
+}
+
+.section1 h1 {
+  color: rgb(221, 221, 221);
+  margin: 0;
+  padding: 0;
+}
+
+.body1 {
+  background: linear-gradient(
+    to bottom,
+    rgba(0, 0, 0, 0.534) 97%,
+    #0215a1 100%
+  );
+}
+
+/* Flip Card */
+.flip-card {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 25vw;
+}
+.flip-inner {
+  position: relative;
+  width: 25vw;
+  height: 100%;
+  transition: transform 1.5s;
+  transform-style: preserve-3d;
+}
+.flip-card:hover .flip-inner {
+  transform: rotateY(180deg);
+}
+.flip-front,
+.flip-back {
+  position: absolute;
+  width: 25vw;
+  height: 100%;
+  backface-visibility: hidden;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border-radius: 8px;
+
+  color: white;
+}
+.flip-back {
+  transform: rotateY(180deg);
+  background: #00000000;
+  width: 20vw;
+  display: grid;
+  z-index: 100000000000;
+}
+.back-txt {
+  width: 20vw;
+  margin-right: 10vw;
+}
+
+.scrolling-div {
+  flex: 1;
+  top: 0;
+  margin-top: 2vh;
+
+  overflow: auto;
+  height: 20vh;
+  padding: 0 5px;
+}
+.scrolling-div::-webkit-scrollbar {
+  width: 20px;
+  margin: 10vh;
+  padding: 2vh;
+}
+.scrolling-div::-webkit-scrollbar-thumb {
+  background-color: #32cd3200;
+  border-radius: 50px;
+  width: 1px;
+  margin: 2px;
+  padding: 20px;
+  border: 2px solid rgb(0, 0, 0);
+  box-shadow: 0 0 15px #111bf2;
+}
+.scrolling-div::-webkit-scrollbar-track {
+  background-color: inherit;
+  border: 1px solid #111cf231;
+  z-index: -50;
+  border-radius: 50px;
+}
+.scrolling-div::-webkit-scrollbar-button {
+  background-color: rgba(128, 255, 0, 0);
+  color: #0215a1;
+  box-shadow: 0 0 15px #111bf2;
+  border-radius: 50px;
+  border: 2px solid rgb(0, 0, 0);
+}
+
+.hero-card {
+  align-items: center;
+  background-image: url(pic/hero-bg.png);
+  background-size: cover;
+  background-repeat: no-repeat;
+
+  border-radius: 0 0 16px 16px;
+}
+.homeServeBtn{
+  background: #111bf2;
+  border: none;
+  padding: 5px 10px;
+  color: rgb(255, 255, 255);
+  font-size: 0.9em;
+  cursor: pointer; 
+  border-radius: 10px;
+  margin: 0;
+} 
+#moveserve{
+  display: block;
+  margin: -1vh 0;
+}
+/* hero section end*/
+
+/* about page */
+.abt {
+  display: flex;
+  align-items: auto;
+  color: white;
+  justify-content: space-evenly;
+
+  margin: 0;
+
+  top: 2vh;
+  overflow-x: none;
+}
+.abttxt {
+  width: 40%;
+  position: sticky;
+  top: 8vh;
+  bottom: 0;
+
+  height: 64vh;
+
+  color: white;
+
+  overflow-y: auto;
+  flex-shrink: 0;
+}
+.abttxt1 {
+  float: left;
+}
+.abtleft {
+  width: 40%;
+  overflow-y: auto;
+  height: 63vh;
+  padding-right: 2vh;
+}
+.abtleft::-webkit-scrollbar {
+  width: 20px;
+  margin: 10vh;
+  padding: 2vh;
+}
+.abtleft::-webkit-scrollbar-thumb {
+  background-color: #32cd3200;
+  border-radius: 50px;
+  width: 1px;
+  margin: 2px;
+  padding: 20px;
+  border: 2px solid rgb(0, 0, 0);
+  box-shadow: 0 0 15px #111bf2;
+}
+.abtleft::-webkit-scrollbar-track {
+  background-color: inherit;
+  border: 1px solid #111cf231;
+  z-index: -50;
+  border-radius: 50px;
+}
+.abtleft::-webkit-scrollbar-button {
+  background-color: rgba(128, 255, 0, 0);
+  color: #0215a1;
+  box-shadow: 0 0 15px #111bf2;
+  border-radius: 50px;
+  border: 2px solid rgb(0, 0, 0);
+}
+
+.avater-sheet {
+  border: 2px solid white;
+  width: 32.5vh;
+  height: 45vh;
+  padding: 1vh;
+  display: block;
+  align-items: center;
+  justify-content: center;
+  border-radius: 50px;
+  margin: 1vh;
+  background-image: url(pic/abt-dark.jpg);
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: center;
+  transition: 0.5s;
+}
+.avater-sheet:hover {
+  box-shadow: 0 0 10px #111bf2;
+}
+
+.abt-avater-img {
+  width: 29vh;
+  height: 26vh;
+  margin: 0;
+  padding: 0;
+  border-radius: 50px 50px 0px 0px;
+}
+.abt-avater-txt {
+  width: 30vh;
+
+  background: rgba(0, 255, 34, 0);
+  color: rgb(255, 255, 255);
+  margin: 0;
+
+  border-radius: 0px 0px 50px 50px;
+  padding: 1vh;
+  text-align: center;
+  border: 1px solid #111bf2;
+}
+.abt-avater-txt1 {
+  display: grid;
+
+  place-items: center;
+
+  height: 45vh;
+}
+.abt-avater-txt p {
+  margin: 1vh 0;
+  font-size: 0.9em;
+}
+.abt-avater-txt h3 {
+  margin: 0;
+}
+#abt-avater-txt-btn {
+  background-color: inherit;
+  padding: 0.5vh 2vh;
+  margin: 0;
+  color: white;
+  border: 1px solid white;
+  transition: 0.5s;
+}
+#abt-avater-txt-btn:hover {
+  background: linear-gradient(
+    to bottom,
+    #111bf2 0%,
+    rgba(0, 0, 0, 0) 10%,
+    rgba(0, 0, 0, 0) 90%,
+    #111bf2 100%
+  );
+  border: 1px solid rgba(17, 17, 17, 0);
+}
+
+.carousel-container {
+  position: relative;
+  width: 100%;
+  overflow: hidden;
+  padding: 20px 0;
+}
+
+.carousel-track {
+  display: flex;
+  width: max-content;
+  animation: scroll 30s linear infinite;
+}
+
+.carousel-track:hover {
+  animation-play-state: paused;
+}
+
+.testimonial-card {
+  flex: 0 0 30vh;
+  background-color: #3a78d2;
+  color: white;
+  border-radius: 10px;
+  padding: 20px;
+  margin: 0 15px;
+  display: flex;
+  flex-direction: column;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.testimonial-message {
+  text-align: left;
+  flex-grow: 1;
+  margin-bottom: 15px;
+}
+
+.stars {
+  text-align: center;
+  font-size: 24px;
+  color: gold;
+  margin-bottom: 10px;
+}
+
+.reviewer-name {
+  text-align: center;
+  font-weight: bold;
+}
+
+@keyframes scroll {
+  0% {
+    transform: translateX(0);
+  }
+  100% {
+    transform: translateX(-50%);
+  }
+}
+
+/* Duplicate cards for seamless looping */
+.carousel-track::after {
+  content: "";
+  display: none;
+}
+
+@media (max-width: 768px) {
+  .testimonial-card {
+    flex-basis: 25vh;
+  }
+}
+
+@media (max-width: 480px) {
+  .testimonial-card {
+    flex-basis: 20vh;
+  }
+}
+
+/* about page end*/
+
+/* service sections */
+* {
+  box-sizing: border-box;
+  scroll-behavior: smooth;
+}
+
+.body3,
+.body5 {
+  margin: 0;
+  font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+  display: flex;
+
+  padding: 0;
+  margin: 7vh 5vw;
+  border-radius: 10px;
+
+  height: 75vh;
+  overflow: auto;
+}
+
+.sidebar {
+  display: block;
+  position: sticky;
+  top: 9vh;
+  bottom: 0;
+  width: 250px;
+  height: max-content;
+  border: 2px solid;
+  border-radius: 20px;
+  color: white;
+  padding: 20px;
+  overflow-y: auto;
+  flex-shrink: 0;
+  background: linear-gradient(
+    to bottom,
+    #111bf2 0%,
+    rgba(0, 0, 0, 0) 10%,
+    rgba(0, 0, 0, 0) 90%,
+    #111bf2 100%
+  );
+  margin: 2vh;
+  margin-top: 4vh;
+}
+
+.sidebar h2 {
+  margin-top: 0;
+  font-size: 20px;
+}
+.contain-service-section {
+  display: flex;
+  margin: 0;
+
+  top: 2vh;
+}
+.sidebar a {
+  display: block;
+  margin: 10px 0;
+  color: white;
+  text-decoration: none;
+  padding: 8px 12px;
+  border-radius: 5px;
+  transition: background 0.3s;
+}
+
+#search-bar-1,
+#search-bar-2 {
+  border-radius: 50px;
+  border: 2px solid #0215a1;
+  height: 4vh;
+}
+#search-bar-1:hover,
+#search-bar-2:hover {
+  box-shadow: 0 0 10px #0215a1;
+  border: 2px solid #0215a1;
+}
+#search-bar-1:focus,
+#search-bar-2:focus {
+  box-shadow: 0 0 12px #0215a1;
+  border: 2px solid #0215a1;
+}
+.sidebar a:hover {
+  background: linear-gradient(
+    to bottom,
+    #111bf2 0%,
+    rgba(0, 0, 0, 0) 10%,
+    rgba(0, 0, 0, 0) 90%,
+    #111bf2 100%
+  );
+}
+
+#product-search {
+  width: 100%;
+  padding: 8px;
+  font-size: 16px;
+}
+
+#results-1,
+#results-2 {
+  list-style: none;
+  margin: 0;
+  padding: 3px;
+  background: rgb(78, 78, 78);
+  height: 17vh;
+  overflow-y: auto;
+  border: 1px solid #111bf2 100%;
+  display: none;
+  position: absolute;
+  width: 15vw;
+  z-index: 9999999999991001;
+}
+
+#search-results li {
+  padding: 8px;
+  cursor: pointer;
+  border-bottom: 1px solid #111bf2;
+}
+
+#search-results li:hover {
+  background: #959595;
+}
+
+.main-content {
+  flex: 1;
+  top: 0;
+  margin-top: vh;
+
+  padding: 30px;
+  overflow: auto;
+  height: 63vh;
+}
+.main-content::-webkit-scrollbar {
+  width: 20px;
+  margin: 10vh;
+  padding: 2vh;
+}
+.main-content::-webkit-scrollbar-thumb {
+  background-color: #32cd3200;
+  border-radius: 50px;
+  width: 1px;
+  margin: 2px;
+  padding: 20px;
+  border: 2px solid rgb(0, 0, 0);
+  box-shadow: 0 0 15px #0215a1;
+}
+.main-content::-webkit-scrollbar-track {
+  background-color: inherit;
+  border: 1px solid #111cf231;
+  z-index: -50;
+  border-radius: 50px;
+}
+.main-content::-webkit-scrollbar-button {
+  background-color: rgba(128, 255, 0, 0);
+  color: #0215a1;
+  box-shadow: 0 0 15px #111bf2;
+  border-radius: 50px;
+  border: 2px solid rgb(0, 0, 0);
+}
+
+/* Section Styles */
+.section {
+  margin-bottom: 30px;
+  padding: 20px;
+  border-radius: 8px;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+  width: 100%;
+  max-width: 1200px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.section h2 {
+  margin-bottom: 15px;
+  color: rgb(255, 255, 255);
+  border-bottom: 2px solid #eee;
+  padding-bottom: 10px;
+}
+
+/* Cards Container - Responsive Grid */
+.cards-container {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  gap: 20px;
+  color: white;
+}
+
+@media (max-width: 768px) {
+  .cards-container {
+    grid-template-columns: 1fr;
+  }
+}
+
+/* Card Styles */
+.product-card {
+  border: 1px solid #ddd;
+  padding: 15px;
+  transition: transform 0.2s, box-shadow 0.2s;
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+  background: linear-gradient(
+    to bottom,
+    #111bf2 0%,
+    rgba(0, 0, 0, 0) 10%,
+    rgba(0, 0, 0, 0) 90%,
+    #111bf2 100%
+  );
+  padding: 20px;
+  border-radius: 10px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
+  transition: transform 0.3s;
+}
+
+.product-card:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.15);
+}
+
+.product-name {
+  font-weight: bold;
+  font-size: 1.1rem;
+  margin-bottom: 10px;
+  color: rgb(255, 255, 255);
+}
+
+.product-description {
+  height: 2.3vh;
+  min-height: 40px; /* Fallback for mobile */
+  overflow-y: auto;
+  font-size: 0.9rem;
+  color: rgb(255, 255, 255);
+  margin-bottom: 15px;
+  padding-right: 5px;
+  border: 1px solid #eee;
+  padding: 8px;
+  border-radius: 4px;
+  background-color: #fafafa00;
+  flex-grow: 1;
+}
+
+/* Custom scrollbar for description */
+.product-description::-webkit-scrollbar {
+  width: 5px;
+}
+
+.product-description::-webkit-scrollbar-track {
+  background: #f1f1f1;
+}
+
+.product-description::-webkit-scrollbar-thumb {
+  background: #888;
+  border-radius: 10px;
+}
+
+.product-description::-webkit-scrollbar-thumb:hover {
+  background: #555;
+}
+
+.product-footer {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-top: auto; /* Pushes footer to bottom */
+}
+
+.product-price {
+  font-weight: bold;
+  color: #2a6496;
+  font-size: 1rem;
+}
+
+.buy-button {
+  background-color: #4caf50;
+  color: white;
+  border: none;
+  padding: 8px 15px;
+  border-radius: 4px;
+  cursor: pointer;
+  font-size: 0.9rem;
+  transition: background-color 0.3s;
+  text-decoration: none;
+  display: inline-block;
+}
+
+.buy-button:hover {
+  background-color: #45a049;
+}
+
+@media (max-width: 768px) {
+  .body3 {
+    flex-direction: column;
+  }
+
+  .sidebar {
+    width: 100%;
+    height: auto;
+    position: relative;
+  }
+
+  .main-content {
+    padding: 20px;
+  }
+}
+
+/* serv sect end */
+
+/* contact section */
+.body4 button {
+  cursor: pointer;
+}
+.con1 {
+  display: grid;
+  padding: 10px;
+  grid-template-columns: repeat(4, 1fr);
+  grid-template-rows: repeat(2, 1fr);
+  gap: 10px;
+}
+
+.box1 {
+  grid-column: 1 / 2;
+  grid-row: 1 / 2;
+  background-color: #0b1014;
+  overflow: hidden;
+}
+
+.box2 {
+  grid-column: 2 / 4;
+  grid-row: 1 / 2;
+  background-color: #242527;
+  color: #e5e6eb;
+  overflow: hidden;
+}
+
+.box3 {
+  grid-column: 1 / 3;
+  grid-row: 2 / 3;
+  background-color: rgb(0, 0, 0);
+  overflow: hidden;
+}
+
+.box4 {
+  grid-column: 3 / 4;
+  grid-row: 2 / 3;
+  background-color: rgb(0, 0, 0);
+  overflow: hidden;
+  color: white;
+}
+
+.box5 {
+  grid-column: 4 / 5;
+  grid-row: 1 / 3;
+  background-color: #1d2226;
+  border-radius: 10px;
+  overflow: hidden;
+  color: white;
+}
+
+.box1,
+.box2,
+.box3,
+.box4 {
+  height: 30vh;
+  border-radius: 10px;
+  box-shadow: 0 0 10px #01010c;
+}
+
+#b1a,
+#b2a,
+#b4a,
+#b5a {
+  height: 40%;
+  background-image: url(pic/wallpaper.jpg);
+  background-position: center;
+  background-size: cover;
+}
+
+#b1b h3,
+#b1b p,
+#b2b h3,
+#b2b p,
+.x-txt h3,
+.x-txt p,
+#b5b h2,
+#b5b p,
+.ig-txt p {
+  margin: -2px 0;
+  padding: -2px 0;
+}
+.wa-avater,
+.fb-avater,
+.x-avatar,
+.lin-avater {
+  width: 10vh;
+  border-radius: 50%;
+  height: 9vh;
+}
+
+#b1a {
+  background-image: url(pic/wa-bg.png);
+  background-size: contain;
+  background-repeat: no-repeat;
+  background-size: 30vh;
+  background-color: black;
+}
+#b1b {
+  margin-top: -7vh;
+  display: block;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  color: cornsilk;
+}
+.wa-avater {
+  padding: 2px;
+  border: 2px solid #26d367;
+  width: 13vh;
+  height: 12vh;
+  cursor: grab;
+}
+.wa-btn {
+  display: flex;
+  text-align: center;
+  align-items: center;
+  justify-content: space-evenly;
+}
+.wa-a-btn {
+  width: 6vw;
+  height: 5vh;
+  font-size: 2vh;
+  margin-top: 5px;
+  border: 2px solid rgb(47, 47, 47);
+  border-radius: 10px;
+  background-color: transparent;
+  color: white;
+}
+.wa-a-btn:hover {
+  background-color: rgb(47, 47, 47);
+}
+
+.box3 {
+  display: flex;
+}
+
+.ig-profile-img {
+  margin: auto;
+}
+
+.ig-whole-txt {
+  display: block;
+  color: white;
+  width: 70%;
+  padding: 10px;
+  margin: 10px;
+}
+.ig-btn {
+  display: flex;
+}
+.ig-follow-count {
+  display: flex;
+}
+
+#ig-avatar {
+  width: 20vh;
+  border-radius: 50%;
+  height: 19vh;
+  margin: 0 3vw;
+  cursor: grab;
+}
+
+.ig-btn button {
+  padding: 3px 10px;
+  margin-left: 1vw;
+  border-radius: 5px;
+  border: none;
+  color: white;
+  background-color: #363636;
+}
+.ig-num {
+  display: flex;
+  gap: 10px;
+  margin-right: 2vw;
+}
+
+#b2b {
+  padding: 5px 5px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+.fb-avater {
+  width: 17vh;
+  margin: 0 10px;
+  height: 16vh;
+  cursor: grab;
+}
+.fb-txts {
+  display: grid;
+  gap: 7px;
+  align-items: center;
+  margin-top: -2vh;
+}
+#fb-fllo-btn,
+#fb-msg {
+  padding: 5px 10px;
+  border-radius: 3px;
+  font-size: 2vh;
+  border: 1px solid #1a7ce400;
+  background-color: #393a3c;
+  color: white;
+  margin: 2vh 0;
+}
+#fb-fllo-btn:hover {
+  background-color: inherit;
+  border: 1px solid #1a7ae4;
+}
+#fb-msg:hover {
+  background-color: inherit;
+  border: 1px solid #393a3c;
+}
+#fb-fllo-btn {
+  background-color: #1a7ae4;
+}
+.fb-fllo {
+  display: flex;
+}
+
+.fb-stack {
+  position: sticky;
+  display: inline-block;
+  width: 5.7vw;
+  height: max-content;
+  margin: 0;
+}
+
+.fb-stack img {
+  position: absolute;
+  width: 2vw; /* Adjust the width and height to fit your needs */
+  height: 4vh;
+  border-radius: 50%; /* Optional: make the images circular */
+  border: 1px solid #fff; /* Optional: add a border around the images */
+  cursor: pointer;
+}
+
+.fb-stack img:nth-child(1) {
+  z-index: 9;
+  left: 0;
+}
+
+.fb-stack img:nth-child(2) {
+  z-index: 7;
+  left: 20px; /* Adjust the overlap amount */
+}
+
+.fb-stack img:nth-child(3) {
+  z-index: 6;
+  left: 40px; /* Adjust the overlap amount */
+}
+.fb-stack img:nth-child(4) {
+  z-index: 5;
+  left: 60px; /* Adjust the overlap amount */
+}
+.fb-stack img:nth-child(5) {
+  z-index: 4;
+  left: 80px; /* Adjust the overlap amount */
+}
+.fb-stack img:nth-child(6) {
+  z-index: 3;
+  left: 100px; /* Adjust the overlap amount */
+}
+.fb-stack img:nth-child(7) {
+  z-index: 2;
+  left: 120px; /* Adjust the overlap amount */
+}
+.fb-stack img:nth-child(8) {
+  z-index: 1;
+  left: 140px; /* Adjust the overlap amount */
+}
+
+.fb-btn {
+  margin-top: auto;
+}
+
+.x-top {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+.x-avatar {
+  margin-top: -7vh;
+  cursor: grab;
+}
+
+.x-btn {
+  padding: 7px 12px;
+  border-radius: 50px;
+  border: 2px solid rgba(255, 255, 255, 0);
+  font-size: 0.7rem;
+}
+.x-btn:hover {
+  color: white;
+  border: 2px solid white;
+  background-color: inherit;
+}
+.x-follow {
+  display: flex;
+  gap: 20px;
+}
+.b4b {
+  padding: 0 10px;
+}
+.b4b p {
+  font-size: 0.9rem;
+}
+#ash {
+  color: rgb(139, 139, 139);
+}
+#ash b {
+  color: rgb(255, 255, 255);
+}
+
+.m-connect {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  justify-items: center;
+}
+
+#b5a {
+  height: 25%;
+}
+#b5b {
+  margin-top: -13vh;
+  padding: 0 10px;
+  font-size: 1em;
+}
+#b5b p {
+  padding: 5px 0;
+  font-size: 1em;
+}
+#b5b h2 {
+  font-size: 2em;
+}
+.lin-follow {
+  display: flex;
+  gap: 2vh;
+}
+.lin-img {
+  background-color: #1d2226;
+  width: 21vh;
+  border-radius: 50%;
+  height: 20vh;
+  align-items: center;
+  justify-content: center;
+}
+.lin-avater {
+  width: 19vh;
+  border-radius: 50%;
+  height: 18vh;
+  padding: 2px;
+  border: 2px solid #71b7fc;
+  cursor: grab;
+
+  margin-top: 1vh;
+}
+.lin-btn {
+  margin-top: 3vh;
+  display: grid;
+  gap: 10px;
+}
+.lin-a-btn {
+  width: 100%;
+  border-radius: 50px;
+  padding: 1vh 0;
+  border: none;
+  border: 1px solid #71b7fc;
+  color: #71b7fc;
+  cursor: pointer;
+}
+#lin-a-btn-blue {
+  background-color: #71b7fc;
+  color: white;
+}
+
+.lin-a-btn:hover {
+  border: 2px solid white;
+  background-color: inherit;
+}
+#lin-a-btn-blue:hover {
+  background-color: inherit;
+  border: 2px solid #71b7fc;
+  color: #71b7fc;
+}
+
+.lin-stack {
+  position: sticky;
+  display: inline-block;
+  width: 5.7vw;
+  height: max-content;
+  margin: 0vh 0;
+}
+
+.lin-stack img {
+  position: absolute;
+  width: 2vw; /* Adjust the width and height to fit your needs */
+  height: 4vh;
+  border-radius: 50%; /* Optional: make the images circular */
+  border: 1px solid #fff; /* Optional: add a border around the images */
+}
+
+.lin-stack img:nth-child(1) {
+  z-index: 3;
+  left: 0;
+}
+
+.lin-stack img:nth-child(2) {
+  z-index: 2;
+  left: 20px; /* Adjust the overlap amount */
+}
+
+.lin-stack img:nth-child(3) {
+  z-index: 1;
+  left: 40px; /* Adjust the overlap amount */
+}
+
+/* contact section */
+
+/* update section */
+.body5 {
+  overflow: auto;
+}
+
+/* update section end*/
+
+/* games section */
+.game-section {
+  display: flex;
+
+  padding: 10px;
+
+  justify-content: space-evenly;
+}
+
+.game-list {
+  display: grid;
+
+  padding: 10px;
+  grid-template-columns: repeat(3, 1fr);
+  width: 100%;
+  gap: 10px;
+}
+.game {
+  width: 25vh;
+  border-radius: 25px;
+  border: 2px solid #111bf2;
+  display: flex;
+  margin: auto;
+  transition: 01s;
+}
+.game:hover {
+  width: 20vh;
+  box-shadow: 1px 1px 20px 10px #111bf2;
+}
+.a-game {
+  margin: auto;
+  align-items: center;
+  justify-content: center;
+}
+.game-display {
+  width: 40%;
+}
+.game-display img:hover {
+  box-shadow: 1px 1px 20px 10px #111cf2de;
+}
+.game-display img {
+  width: 30vw;
+  height: 60vh;
+  border-radius: 20px;
+}
+/* games section end */
+
+/* contact section at the buttom */
+.body-contact {
+  display: flex;
+  max-height: 9vh;
+  overflow: hidden;
+  align-items: center;
+  justify-content: space-between;
+}
+.contact {
+  padding: auto;
+  display: flex;
+  margin: 0;
+  justify-content: center;
+  align-items: center;
+  gap: 2vw;
+}
+.contact button {
+  background: rgba(255, 0, 0, 0);
+  border: none;
+}
+.con-btn {
+  padding: 10px;
+}
+.con-img {
+  width: 3vw;
+  height: 5vh;
+  margin: 0;
+  filter: brightness(1) invert(2);
+}
+
+.icon {
+  width: 2vw;
+}
+
+.design,
+.contact,
+.copyrights {
+  max-width: 20vw;
+  margin: 0 2vh;
+}
+.design,
+.copyrights {
+  color: #0215a1;
+}
+#tire {
+  color: #0215a1;
+}
+
+/* contact section at the buttom end */
+
+@media screen and (min-width: 745px) {
+  .ph-nav {
+    display: none;
+  }
+}
+
+@media screen and (max-width: 746px) {
+  .ph-nav {
+    display: flex;
+  }
+  .navbar {
+    display: none;
+  }
+}
+
+/* VIEW ON SYSTEM*/
+@media screen and (min-width: 801px) {
+  .footer2 {
+    display: none;
+  }
+  .abttxtphn {
+    display: none;
+  }
+  .abt-avater-txt1 {
+    height: 45vh;
+    overflow-x: auto;
+  }
+}
+
+/* VIEW ON PHONE */
+@media screen and (max-width: 800px) {
+  .navbar {
+    display: none;
+    padding: 0;
+  }
+  .list {
+    display: flex;
+    justify-content: center;
+    display: grid;
+    grid-auto-flow: column;
+    list-style-type: none;
+    column-gap: 0.5vw;
+    margin: 0;
+    padding: 0;
+  }
+  .list li {
+    padding: 0;
+  }
+  .nav-icon {
+    width: 5vh;
+    height: 4vh;
+    margin: 0.5em;
+  }
+  .tooltip {
+    transition: opacity 5s ease;
+    opacity: 0;
+  }
+
+  #hide {
+    display: none;
+  }
+  .header {
+    position: fixed;
+    top: 0.1vh;
+    left: 1vh;
+    right: 1vh;
+    bottom: 90%;
+    box-shadow: none;
+    height: 7vh;
+  }
+  .section1 {
+    display: grid;
+    padding-top: 7vh;
+    padding-bottom: 9vh;
+  }
+  .box {
+    padding: auto;
+    margin-top: 5vh;
+  }
+  .hero {
+    height: 50vh;
+    width: 25vw;
+    display: grid;
+    margin: auto;
+  }
+
+  .hero-glow-text {
+    font-size: 13.5vh;
+  }
+
+  .body1 {
+    background: linear-gradient(
+      to bottom,
+      rgba(0, 0, 0, 0.534) 97%,
+      #0215a1 100%
+    );
+  }
+
+  /* Flip Card */
+  .flip-card {
+    display: grid;
+    width: 25vw;
+  }
+
+  .back-txt {
+    width: 70vw;
+    margin-right: 0vw;
+  }
+
+  .body1,
+  .body2,
+  .body3,
+  .body4,
+  .body5,
+  .body6,
+  .body-contact {
+    padding: 0;
+    margin: 0;
+    border-radius: 10px;
+    height: auto;
+    overflow: auto;
+    background: linear-gradient(
+      to bottom,
+      rgba(0, 0, 0, 0.534) 97%,
+      #111bf2 100%
+    );
+  }
+
+  #search-bar-1,
+  #search-bar-2 {
+    width: 40vw;
+  }
+  #results-1,
+  #results-2 {
+    width: 40vw;
+  }
+
+  /* contact section at the buttom */
+  .body-contact {
+    display: flex;
+
+    max-height: 9vh;
+    overflow: hidden;
+    align-items: center;
+    justify-content: space-evenly;
+    position: fixed;
+    bottom: 6vh;
+    left: 0;
+    right: 0;
+
+    z-index: 9999999999;
+    box-shadow: none;
+    border-radius: 50px;
+    margin: 0.5vh;
+    background: rgba(255, 255, 255, 0.1);
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    color: white;
+    box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
+    padding: 1vh;
+  }
+  .light-mode .body-contact {
+    border: 1px solid #0214a13f;
+  }
+  .contact {
+    padding: auto;
+    display: flex;
+    margin: 0;
+    justify-content: center;
+    align-items: center;
+  }
+  .contact button {
+    background: rgba(255, 0, 0, 0);
+    border: none;
+  }
+  .con-btn {
+    padding: 10px;
+  }
+  .con-img {
+    width: 9vw;
+    height: 4vh;
+    margin: 0;
+  }
+
+  .design,
+  .contact,
+  .copyrights {
+    max-width: 20vw;
+    margin: 0 2vh;
+  }
+  .design,
+  .copyrights {
+    color: #0215a1;
+  }
+
+  .body-contact {
+    height: max-content;
+    margin: 0vh 5vw;
+  }
+
+  .toggle-container {
+    display:flex;
+    text-align: center;
+    background: rgb(199, 197, 197);
+    width: 9vw;
+    height: 4vh;
+    border-radius: 20px;
+    align-items: center;
+    justify-content: center;
+  }
+  .toggle-circle {
+    width: 9vw;
+    height: 4vh;
+    display: flex;
+    align-items: center;
+    justify-content: center; 
+  }
+  .light .toggle-circle {
+    transform: translateX(0vh);
+  }
+  .icon {
+    font-size: 1.3em;
+    margin: 0;
+    width: 9vw;
+    height: 4vh;
+    padding: 0px;
+    text-align: center;  
+  }
+
+  .footer2 {
+    display: flex;
+    height: 5vh;
+    align-items: center;
+    justify-content: space-evenly;
+    color: #0215a1;
+  }
+
+  .hometxt {
+    width: 90vw;
+    float: right;
+  }
+
+  .abt {
+    display: grid;
+    justify-content: center;
+    padding: 1vh;
+    padding-top: 7vh;
+    padding-bottom: 9vh;
+  }
+  .abttxt {
+    display: none;
+  }
+  .abttxt1 {
+    float: none;
+    margin: 0;
+  }
+  .abtleft {
+    width: 100%;
+    overflow-y: auto;
+    height: auto;
+    padding-right: 2vh;
+  }
+  .abttxtphn {
+    display: grid;
+  }
+  .abt-avater-txt1 {
+    width: 100%;
+    height: auto;
+  }
+
+  .avater-sheet {
+    margin: auto;
+  }
+
+  .contain-service-section {
+    padding-top: 7vh;
+    padding-bottom: 9vh;
+    display: grid;
+  }
+  .sidebar {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    grid-template-rows: repeat(4, 1fr);
+    width: 100%;
+    top: 0vh;
+    margin: 2vh 0.5vh;
+    width: 90vw;
+    height: 30vh;
+  }
+  .sidebar a {
+    padding: 4px 6px;
+    margin: 0;
+  }
+
+  .main-content {
+    margin-top: vh;
+
+    padding: 0;
+    overflow: auto;
+    height: 43vh;
+  }
+
+  .con1 {
+    display: grid;
+    grid-template-rows: repeat(7, 1fr);
+    padding-top: 9vh;
+    padding-bottom: 9vh;
+    grid-template-columns: repeat(1, 1fr);
+    gap: 1vh;
+  }
+  .box1,
+  .box2,
+  .box4 {
+    height: 30vh;
+    border-radius: 10px;
+    box-shadow: 0 0 10px #0000b4;
+  }
+  .box1 {
+    grid-area: 1 / 1 / 2 / 2;
+  }
+  .box2 {
+    grid-area: 2 / 1 / 4 / 2;
+    height: 60vh;
+    width: 100%;
+  }
+  .box3 {
+    grid-area: 4 / 1 / 5 / 2;
+    height: 30vh;
+  }
+  .box4 {
+    grid-area: 5 / 1 / 6 / 2;
+  }
+  .box5 {
+    grid-area: 6 / 1 / 8 / 2;
+    height: 60vh;
+  }
+
+  .wa-a-btn {
+    width: auto;
+  }
+  .b4b,
+  .b5b {
+    height: 100%;
+  }
+  #b2b {
+    display: grid;
+    height: 60%;
+    width: 90vw;
+    justify-content: center;
+  }
+  .fb-avater {
+    margin: 0;
+    margin-top: -17vh;
+    margin-bottom: -7vh;
+  }
+  .fb-avater {
+    width: 35vw;
+    height: 17.5vh;
+    padding: 1vh;
+    background-color: #ffffff;
+  }
+  .fb-txts h3 {
+    font-size: 1.7em;
+  }
+  .fb-txts {
+    display: grid;
+    margin-top: 2vh;
+    margin-bottom: 0;
+    justify-content: space-evenly;
+    align-items: left;
+    row-gap: 2vh;
+  }
+  .fb-bio,
+  .fb-fllo {
+    font-size: 1.2em;
+  }
+  .m-connect {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    justify-items: center;
+  }
+  .fb-stack {
+    width: 9.7vw;
+    margin-left: -70vw;
+  }
+
+  .fb-stack img {
+    width: 6vw; /* Adjust the width and height to fit your needs */
+    height: 4vh;
+  }
+  .fb-bio {
+    margin-top: 4vh;
+  }
+  .fb-bio a {
+    text-decoration: none;
+    color: inherit;
+  }
+  #fb-fllo-btn,
+  #fb-msg {
+    padding: 8px 16px;
+    border-radius: 3px;
+    font-size: 1.2em;
+
+    margin: 2vh 0;
+    margin: 5px;
+  }
+  .box3 {
+    display: grid;
+  }
+  .b4b .m-connect {
+    height: 4vh;
+  }
+
+  .lin-stack {
+    margin-right: 15vw;
+    padding: 0;
+    margin-left: -19vw;
+    margin-bottom: 0vh;
+    margin-top: 1vh;
+    display: flex;
+    align-items: center;
+  }
+
+  .lin-stack img {
+    width: 6vw; /* Adjust the width and height to fit your needs */
+    height: 4vh;
+    margin-bottom: 0vh;
+  }
+
+  .game-section {
+    display: grid;
+    padding-top: 7vh;
+    padding-bottom: 9vh;
+  }
+  .game-display {
+    width: 100%;
+  }
+  .game-display img {
+    width: 100%;
+    height: 49.3vh;
+  }
+  .game-list {
+    display: grid;
+  }
+  .game {
+    width: 12vh;
+  }
+  .a-game {
+    overflow: hidden;
+  }
+  .a-game:hover {
+    width: 12.2vh;
+  }
+  .game:hover {
+    width: 0vh;
+  }
+}
+
+.body4 {
+  background-image: url(pic/con-loadingdesk.gif);
+  height: 75vh;
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: contain;
+}
+
+  </style>
+   <!-- GENERAL STYLE end -->
+
+   <!-- theme style -->
+   <style>
+   /* style for te light mode view  start*/
+
+.light-mode {
+  background: #fff4f0;
+  color: #05214a;
+}
+/* .light-mode #loader-wrapper {
+  background-color: rgb(255, 255, 255);
+}
+.light-mode #loader-content {
+  background-color: #fff;
+} */
+/* for the theme btn  start*/
+.toggle-container {
+  text-align: center;
+  cursor: pointer;
+  background: rgb(255, 255, 255); 
+  width: 7vw;
+  height: 25px;
+  border-radius: 15px;
+  display: flex;
+  align-items: left;
+  padding: 2px;
+  transition: background 0.3s;
+}
+.light-mode .toggle-container { 
+  border:1px solid #ff996e ;
+}
+.toggle-container.light {
+  background: rgb(226, 226, 226);
+}
+.toggle-circle {
+  width: 4vw;
+  height: 3vh;
+  background: rgba(135, 146, 175, 0);
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: transform 0.3s;
+}
+.light .toggle-circle {
+  transform: translateX(3vh);
+  background: rgba(255, 255, 0, 0);
+}
+.icon {
+  font-size: 14px;
+  margin-left: -3vh;
+}
+/* for the theme btn  end*/
+
+.light-mode .container {
+  /* for the container */
+  background: rgb(88, 88, 88);
+  color: #05214a;
+}
+.light-mode button {
+  /* for the buttons */
+  color: #05214a;
+}
+
+/* style for te light mode view  end*/
+
+.light-mode .body1,
+.light-mode .body2,
+.light-mode .body3,
+.light-mode .body4,
+.light-mode .body5,
+.light-mode .body6,
+.light-mode .body-contact {
+  background-color: rgba(255, 255, 255, 0.534);
+  box-shadow: 10px 10px 50px rgb(122, 122, 122);
+  background: linear-gradient(
+    to bottom,
+    rgba(255, 255, 255, 0.534) 97%,
+    #fdc8b1 100%
+  );
+  color: #05214a;
+}
+.light-mode .body-contact { 
+  background: linear-gradient(
+    to bottom,
+    rgba(255, 255, 255, 0.534) 96%,
+    #ff996e 100%
+    100%
+  );
+}
+.light-mode .header {
+  background: linear-gradient(to bottom, #ffffff 0%, #ffffff 90%, #fdded1 95%);
+  box-shadow: 0 0 10px #fdded1;
+}
+
+.light-mode #active {
+  filter: invert(38%) sepia(91%) saturate(1762%) hue-rotate(154deg);
+}
+.light-mode .nav-icon {
+  filter: invert(38%) sepia(91%) saturate(1762%) hue-rotate(154deg);
+}
+.nav-icon:hover {
+  filter: invert(38%) sepia(91%) saturate(1762%) hue-rotate(154deg);
+}
+
+.light-mode .section1 {
+  color: #05214a;
+}
+.light-mode .hero-card {
+  background-image: url(pic/whero-bg.png);
+
+  border: 1px solid #fdc8b1;
+}
+.light-mode .hero-card h2 {
+  color: #05214a;
+}
+.light-mode .hero-card p {
+  color: #3a78d2;
+}
+
+.light-mode .section1 h1 {
+  color: #05214a;
+}
+
+/* Flip Card */
+.light-mode .flip-front,
+.light-mode .flip-back {
+  color: #05214a;
+}
+
+.light-mode .scrolling-div::-webkit-scrollbar-thumb {
+  background-color: #3a78d2;
+
+  border: 2px solid #3a78d2;
+  box-shadow: 0 0 15px #fdded1;
+  width: 00.5px;
+}
+.light-mode .scrolling-div::-webkit-scrollbar-track {
+  background-color: #fdded1;
+  border: 1px solid #fdded1;
+}
+.light-mode .scrolling-div::-webkit-scrollbar-button {
+  background-color: #3a78d2;
+  box-shadow: 0 0 15px #3a78d2;
+  border-radius: 50px;
+  border: 2px solid #3a78d2;
+}
+
+/* about page */
+.light-mode .abt {
+  color: #05214a;
+}
+
+.light-mode .abttxt {
+  color: #05214a;
+}
+
+.light-mode .abtleft::-webkit-scrollbar-thumb {
+  background-color: #3a78d2;
+
+  border: 2px solid #3a78d2;
+  box-shadow: 0 0 15px #fdded1;
+  width: 00.5px;
+}
+
+.light-mode .abtleft::-webkit-scrollbar-track {
+  background-color: #fdded1;
+  border: 1px solid #fdded1;
+}
+
+.light-mode .abtleft::-webkit-scrollbar-button {
+  background-color: #3a78d2;
+  box-shadow: 0 0 15px #3a78d2;
+  border-radius: 50px;
+  border: 2px solid #3a78d2;
+}
+
+.light-mode .avater-sheet {
+  border: 2px solid #05214a;
+  background-image: url(pic/abt-white.jpg);
+}
+
+.light-mode .abt-avater-txt {
+  color: #05214a;
+}
+
+/* service sections */
+.light-mode .sidebar {
+  color: #05214a;
+  background: linear-gradient(
+    to bottom,
+    #111bf2 0%,
+    rgba(0, 0, 0, 0) 10%,
+    rgba(0, 0, 0, 0) 90%,
+    #111bf2 100%
+  );
+}
+
+.light-mode .sidebar a {
+  color: #05214a;
+}
+
+.light-mode .main-content::-webkit-scrollbar-thumb {
+  background-color: #3a78d2;
+
+  border: 2px solid #3a78d2;
+  box-shadow: 0 0 15px #fdded1;
+  width: 00.5px;
+}
+
+.light-mode .main-content::-webkit-scrollbar-track {
+  background-color: #fdded1;
+  border: 1px solid #fdded1;
+}
+
+.light-mode .main-content::-webkit-scrollbar-button {
+  background-color: #3a78d2;
+  box-shadow: 0 0 15px #3a78d2;
+  border-radius: 50px;
+  border: 2px solid #3a78d2;
+}
+
+.light-mode .section h2 {
+  margin-bottom: 15px;
+  color: #05214a;
+  border-bottom: 2px solid #05214a;
+  padding-bottom: 10px;
+}
+
+.light-mode .cards-container {
+  color: #05214a;
+}
+
+.light-mode .product-card {
+  border: 1px solid #ddd;
+  background: linear-gradient(
+    to bottom,
+    #111bf2 0%,
+    rgba(0, 0, 0, 0) 10%,
+    rgba(0, 0, 0, 0) 90%,
+    #111bf2 100%
+  );
+  color: #05214a;
+}
+
+.light-mode .product-name {
+  color: #05214a;
+}
+
+.light-mode .product-description {
+  color: #05214a;
+}
+
+/* contact section */
+
+.light-mode .box1 {
+  background-color: #ffffff;
+  color: black;
+}
+
+.light-mode #b1b {
+  color: rgb(0, 0, 0);
+}
+
+.light-mode .wa-a-btn {
+  border: 2px solid rgb(158, 158, 158);
+}
+
+.light-mode #b2b {
+  background-color: white;
+  color: black;
+}
+
+.light-mode #fb-msg {
+  border: 1px solid #5c5c5cc9;
+  background-color: #35353563;
+  color: rgb(0, 0, 0);
+}
+
+.light-mode .b4b {
+  background-color: white;
+  color: black;
+}
+
+.light-mode .x-btn {
+  border: 1px solid black;
+}
+
+.light-mode .con-img {
+  filter: brightness(1) invert(0);
+}
+
+.light-mode .box5 {
+  background-color: #ffffff;
+}
+.light-mode #b5b h2 {
+  color: black;
+}
+.light-mode .lin-img {
+  background-color: #ffffff;
+}
+.light-mode .design,
+.light-mode .copyrights {
+  color: #05214a;
+}
+.light-mode #hero-btn:hover {
+  color: #05214a;
+}
+.light-mode .body4 {
+  background: linear-gradient(
+    to bottom,
+    rgba(0, 0, 0, 0.034) 97%,
+     100%
+  );
+}
+/* .light-mode .loader-modal {
+  background-color: rgba(255, 255, 255, 0.85);
+}
+.light-mode .loader-gif {
+  width: 120px;
+  height: 120px;
+  background: linear-gradient(135deg, rgb(253, 234, 234), #fdc8b1);
+} */
+ 
+.light-mode .body4 {
+  background-image: url(pic/con-loadingdesk.gif);
+  height: 75vh;
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: contain;
+}
+  .light-mode .homeServeBtn{
+    color: white;
+  }
+  .light-mode #results-1,  .light-mode #results-2 {
+    color: white;
+  }
+   </style>
+  <!-- theme style end-->
+
+  <!-- Loader style -->
+  <style>
+    .loader-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(255, 255, 255, 0.1);
+  backdrop-filter: blur(12px);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 999999999999;
+  transition: opacity 0.5s ease;
+}
+
+.loader-modal {
+  background-color: rgba(255, 255, 255, 0.85);
+  width: 40%;
+  min-height: 200px;
+  border-radius: 20px;
+  box-shadow: 0 15px 50px rgba(0, 0, 0, 0.2);
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  padding: 40px 30px;
+  text-align: center;
+  border: 1px solid rgba(255, 255, 255, 0.6);
+}
+
+.loader-animation {
+  width: 80px;
+  height: 80px;
+  position: relative;
+  margin-bottom: 30px;
+}
+
+.loader-animation::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  border: 4px solid transparent;
+  border-top-color: #111bf2;
+  border-radius: 50%;
+  animation: spin 1.2s linear infinite;
+}
+
+.loader-animation::after {
+  content: "";
+  position: absolute;
+  top: 8px;
+  left: 8px;
+  width: calc(100% - 16px);
+  height: calc(100% - 16px);
+  border: 4px solid transparent;
+  border-top-color: #ff996e;
+  border-radius: 50%;
+  animation: spinReverse 1.5s linear infinite;
+}
+
+.text-rotator {
+  height: 1.5em;
+  overflow: hidden;
+  position: relative;
+  width: 100%;
+  font-size: 22px;
+  font-weight: 500;
+  color: #5c6bc0;
+}
+
+.text-rotator div {
+  position: absolute;
+  width: 100%;
+  animation: slide 20s infinite;
+  text-align: center;
+}
+
+.text-rotator span {
+  display: block;
+  height: 1.5em;
+  line-height: 1.5em;
+}
+
+@keyframes slide {
+  0% { top: 0; }
+  9% { top: 0; }
+  10% { top: -1.5em; }
+  19% { top: -1.5em; }
+  20% { top: -3em; }
+  29% { top: -3em; }
+  30% { top: -4.5em; }
+  39% { top: -4.5em; }
+  40% { top: -6em; }
+  49% { top: -6em; }
+  50% { top: -7.5em; }
+  59% { top: -7.5em; }
+  60% { top: -9em; }
+  69% { top: -9em; }
+  70% { top: -10.5em; }
+  79% { top: -10.5em; }
+  80% { top: -12em; }
+  89% { top: -12em; }
+  90% { top: -13.5em; }
+  99% { top: -13.5em; }
+  100% { top: 0; }
+}
+
+/* Animations */
+@keyframes spin {
+  0% { transform: rotate(0deg); }
+  100% { transform: rotate(360deg); }
+}
+
+@keyframes spinReverse {
+  0% { transform: rotate(0deg); }
+  100% { transform: rotate(-360deg); }
+}
+
+/* Responsive styles */
+@media (max-width: 992px) {
+  .loader-modal {
+      width: 50%;
+  }
+}
+
+@media (max-width: 768px) {
+  .loader-modal {
+      width: 65%;
+      padding: 30px 20px;
+  }
+ 
+  .loader-animation {
+      width: 70px;
+      height: 70px;
+      margin-bottom: 25px;
+  }
+ 
+  .text-rotator {
+      font-size: 20px;
+  }
+}
+
+@media (max-width: 576px) {
+  .loader-modal {
+      width: 80%;
+      padding: 25px 15px;
+  }
+ 
+  .loader-animation {
+      width: 60px;
+      height: 60px;
+      margin-bottom: 20px;
+  }
+ 
+  .text-rotator {
+      font-size: 18px;
+  }
+}
+  </style>
+  <!-- Loader styl end -->
+
+  <!-- phone view -->
+  <style>
+    @media screen and (max-width: 800px) {
+  .navbar {
+    display: none;
+    padding: 0;
+  }
+  .list {
+    display: flex;
+    justify-content: center;
+    display: grid;
+    grid-auto-flow: column;
+    list-style-type: none;
+    column-gap: 0.5vw;
+    margin: 0;
+    padding: 0;
+  }
+  .list li {
+    padding: 0;
+  }
+  .nav-icon {
+    width: 5vh;
+    height: 4vh;
+    margin: 0.5em;
+  }
+  .tooltip {
+    transition: opacity 5s ease;
+    opacity: 0;
+  }
+
+  #hide {
+    display: none;
+  }
+  .header {
+    position: fixed;
+    top: 0.1vh;
+    left: 1vh;
+    right: 1vh;
+    bottom: 90%;
+    box-shadow: none;
+    height: 7vh;
+  }
+  .section1 {
+    display: grid;
+    padding-top: 7vh;
+    padding-bottom: 9vh;
+  }
+  .box {
+    padding: auto;
+    margin-top: 5vh;
+  }
+  .hero {
+    height: 50vh;
+    width: 25vw;
+    display: grid;
+    margin: auto;
+  }
+
+  .hero-glow-text {
+    font-size: 13.5vh;
+  }
+
+  .body1 {
+    background: linear-gradient(
+      to bottom,
+      rgba(0, 0, 0, 0.534) 97%,
+      #0215a1 100%
+    );
+  }
+
+  /* Flip Card */
+  .flip-card {
+    display: grid;
+    width: 25vw;
+  }
+
+  .back-txt {
+    width: 70vw;
+    margin-right: 0vw;
+  }
+
+  .body1,
+  .body2,
+  .body3,
+  .body4,
+  .body5,
+  .body6,
+  .body-contact {
+    padding: 0;
+    margin: 0;
+    border-radius: 10px;
+    height: auto;
+    overflow: auto;
+    background: linear-gradient(
+      to bottom,
+      rgba(0, 0, 0, 0.534) 97%,
+      #111bf2 100%
+    );
+  }
+
+  #search-bar-1,
+  #search-bar-2 {
+    width: 40vw;
+  }
+  #results-1,
+  #results-2 {
+    width: 40vw;
+  }
+
+  /* contact section at the buttom */
+  .body-contact {
+    display: flex;
+
+    max-height: 9vh;
+    overflow: hidden;
+    align-items: center;
+    justify-content: space-evenly;
+    position: fixed;
+    bottom: 6vh;
+    left: 0;
+    right: 0;
+
+    z-index: 999999;
+    box-shadow: none;
+    border-radius: 50px;
+    margin: 0.5vh;
+    background: rgba(255, 255, 255, 0.1);
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    color: white;
+    box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
+    padding: 1vh;
+  }
+  .light-mode .body-contact {
+    border: 1px solid #0214a13f;
+  }
+  .contact {
+    padding: auto;
+    display: flex;
+    margin: 0;
+    justify-content: center;
+    align-items: center;
+  }
+  .contact button {
+    background: rgba(255, 0, 0, 0);
+    border: none;
+  }
+  .con-btn {
+    padding: 10px;
+  }
+  .con-img {
+    width: 9vw;
+    height: 4vh;
+    margin: 0;
+  }
+
+  .design,
+  .contact,
+  .copyrights {
+    max-width: 20vw;
+    margin: 0 2vh;
+  }
+  .design,
+  .copyrights {
+    color: #0215a1;
+  }
+
+  .body-contact {
+    height: max-content;
+    margin: 0vh 5vw;
+  }
+
+  .toggle-container {
+    display:flex;
+    text-align: center;
+    background: rgb(199, 197, 197);
+    width: 9vw;
+    height: 4vh;
+    border-radius: 20px;
+    align-items: center;
+    justify-content: center;
+  }
+  .toggle-circle {
+    width: 9vw;
+    height: 4vh;
+    display: flex;
+    align-items: center;
+    justify-content: center; 
+  }
+  .light .toggle-circle {
+    transform: translateX(0vh);
+  }
+  .icon {
+    font-size: 1.3em;
+    margin: 0;
+    width: 9vw;
+    height: 4vh;
+    padding: 0px;
+    text-align: center;  
+  }
+
+  .footer2 {
+    display: flex;
+    height: 5vh;
+    align-items: center;
+    justify-content: space-evenly;
+    color: #0215a1;
+  }
+
+  .hometxt {
+    width: 90vw;
+    float: right;
+  }
+
+  .abt {
+    display: grid;
+    justify-content: center;
+    padding: 1vh;
+    padding-top: 7vh;
+    padding-bottom: 9vh;
+  }
+  .abttxt {
+    display: none;
+  }
+  .abttxt1 {
+    float: none;
+    margin: 0;
+  }
+  .abtleft {
+    width: 100%;
+    overflow-y: auto;
+    height: auto;
+    padding-right: 2vh;
+  }
+  .abttxtphn {
+    display: grid;
+  }
+  .abt-avater-txt1 {
+    width: 100%;
+    height: auto;
+  }
+
+  .avater-sheet {
+    margin: auto;
+  }
+
+  .contain-service-section {
+    padding-top: 7vh;
+    padding-bottom: 9vh;
+    display: grid;
+  }
+  .sidebar {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    grid-template-rows: repeat(4, 1fr);
+    width: 100%;
+    top: 0vh;
+    margin: 2vh 0.5vh;
+    width: 90vw;
+    height: 30vh;
+  }
+  .sidebar a {
+    padding: 4px 6px;
+    margin: 0;
+  }
+
+  .main-content {
+    margin-top: vh;
+
+    padding: 0;
+    overflow: auto;
+    height: 43vh;
+  }
+
+  .con1 {
+    display: grid;
+    grid-template-rows: repeat(7, 1fr);
+    padding-top: 9vh;
+    padding-bottom: 9vh;
+    grid-template-columns: repeat(1, 1fr);
+    gap: 1vh;
+  }
+  .box1,
+  .box2,
+  .box4 {
+    height: 30vh;
+    border-radius: 10px;
+    box-shadow: 0 0 10px #0000b4;
+  }
+  .box1 {
+    grid-area: 1 / 1 / 2 / 2;
+  }
+  .box2 {
+    grid-area: 2 / 1 / 4 / 2;
+    height: 60vh;
+    width: 100%;
+  }
+  .box3 {
+    grid-area: 4 / 1 / 5 / 2;
+    height: 30vh;
+  }
+  .box4 {
+    grid-area: 5 / 1 / 6 / 2;
+  }
+  .box5 {
+    grid-area: 6 / 1 / 8 / 2;
+    height: 60vh;
+  }
+
+  .wa-a-btn {
+    width: auto;
+  }
+  .b4b,
+  .b5b {
+    height: 100%;
+  }
+  #b2b {
+    display: grid;
+    height: 60%;
+    width: 90vw;
+    justify-content: center;
+  }
+  .fb-avater {
+    margin: 0;
+    margin-top: -17vh;
+    margin-bottom: -7vh;
+  }
+  .fb-avater {
+    width: 35vw;
+    height: 17.5vh;
+    padding: 1vh;
+    background-color: #ffffff;
+  }
+  .fb-txts h3 {
+    font-size: 1.7em;
+  }
+  .fb-txts {
+    display: grid;
+    margin-top: 2vh;
+    margin-bottom: 0;
+    justify-content: space-evenly;
+    align-items: left;
+    row-gap: 2vh;
+  }
+  .fb-bio,
+  .fb-fllo {
+    font-size: 1.2em;
+  }
+  .m-connect {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    justify-items: center;
+  }
+  .fb-stack {
+    width: 9.7vw;
+    margin-left: -70vw;
+  }
+
+  .fb-stack img {
+    width: 6vw; /* Adjust the width and height to fit your needs */
+    height: 4vh;
+  }
+  .fb-bio {
+    margin-top: 4vh;
+  }
+  .fb-bio a {
+    text-decoration: none;
+    color: inherit;
+  }
+  #fb-fllo-btn,
+  #fb-msg {
+    padding: 8px 16px;
+    border-radius: 3px;
+    font-size: 1.2em;
+
+    margin: 2vh 0;
+    margin: 5px;
+  }
+  .box3 {
+    display: grid;
+  }
+  .b4b .m-connect {
+    height: 4vh;
+  }
+
+  .lin-stack {
+    margin-right: 15vw;
+    padding: 0;
+    margin-left: -19vw;
+    margin-bottom: 0vh;
+    margin-top: 1vh;
+    display: flex;
+    align-items: center;
+  }
+
+  .lin-stack img {
+    width: 6vw; /* Adjust the width and height to fit your needs */
+    height: 4vh;
+    margin-bottom: 0vh;
+  }
+
+  .game-section {
+    display: grid;
+    padding-top: 7vh;
+    padding-bottom: 9vh;
+  }
+  .game-display {
+    width: 100%;
+  }
+  .game-display img {
+    width: 100%;
+    height: 49.3vh;
+  }
+  .game-list {
+    display: grid;
+  }
+  .game {
+    width: 12vh;
+  }
+  .a-game {
+    overflow: hidden;
+  }
+  .a-game:hover {
+    width: 12.2vh;
+  }
+  .game:hover {
+    width: 0vh;
+  }
+}
+
+
+.body4 {
+  background-image: url(pic/con-loadingdesk.gif);
+  height: 75vh;
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: contain;
+}
+  </style>
+  <!-- phone view end -->
+
+  <!-- Loader Overlay -->
+  <div class="loader-overlay" id="loaderOverlay">
+    <div class="loader-modal">
+      <div class="loader-animation"></div>
+      <div class="text-rotator"  >
+        <div>
+          <span>Welcome to DeMark TV</span>
+          <span>Your one stop </span>
+          <span>Explore and enjoy</span>
+          <span>Just a few more seconds</span>
+          <span>We're glad you're here</span>
+          <span>This won't take long</span>
+          <span>Join us on WhatsApp</span>
+          <span>Still loading?</span>
+          <span>Check your network</span>
+          <span>Try refreshing...</span>
+        </div>
+      </div>
+    </div>
+  </div>
+  <script>
+    // Function to hide the loader
+    function hideLoader() {
+      const loaderOverlay = document.getElementById("loaderOverlay");
+
+      // Add a small delay to ensure the animation is visible for a moment
+      setTimeout(() => {
+        loaderOverlay.style.opacity = "0";
+        setTimeout(() => {
+          loaderOverlay.style.display = "none";
+        }, 500);
+      }, 1000);
+    }
+
+    // Hide loader when page is fully loaded
+    window.addEventListener("load", function () {
+      hideLoader();
+    });
+
+    // Fallback: hide loader after 10 seconds max
+    setTimeout(hideLoader, 30000);
+  </script> 
+  <body>
+    <!-- <canvas id="smokeCanvas"></canvas> -->
+
+    <div class="body1">
+      <!-- NAVBAR SECTION -->
+      <header class="header">
+        <nav>
+          <ul class="list">
+            <li id="active">
+              <a href="" data-target="body1">
+                <img src="pic/homeicn.png" alt="Home" class="nav-icon" />
+                <div class="tooltip">Home</div>
+              </a>
+            </li>
+            <li>
+              <a href="#" data-target="body2">
+                <img src="pic/abouticn.png" alt="" class="nav-icon" />
+                <div class="tooltip">About</div>
+              </a>
+            </li>
+            <li>
+              <a href="#" data-target="body3">
+                <img src="pic/serviceicn.png" alt="" class="nav-icon" />
+                <div class="tooltip">Services</div>
+              </a>
+            </li>
+            <li>
+              <a href="#" data-target="body4">
+                <img src="pic/contacticn.png" alt="" class="nav-icon" />
+                <div class="tooltip">Contact</div>
+              </a>
+            </li>
+            <li>
+              <a href="#" data-target="body5">
+                <img src="pic/updateicn.png" alt="" class="nav-icon" />
+                <div class="tooltip">Update</div>
+              </a>
+            </li>
+            <li>
+              <a href="#" data-target="body6">
+                <img src="pic/gameicn.png" alt="" class="nav-icon" />
+                <div class="tooltip">Game</div>
+              </a>
+            </li>
+          </ul>
+        </nav>
+      </header>
+      <!-- NAVBAR SECTION end-->
+      <div class="navspace"></div>
+
+      <!-- section one -->
+      <div class="section1">
+        <!-- hero section -->
+        <div class="hero flip-card">
+          <div class="box flip-inner">
+            <div class="hero-container flip-front">
+              <div class="hero-glow-text">DeMark</div>
+              <div class="hero-card">
+                <h2>Television</h2>
+                <p>Bringing You The Best<br />security technology</p>
+
+                <button id="hero-btn">Join Now</button>
+              </div>
+            </div>
+
+            <div class="flip-back">
+              <div class="back-txt">
+                Join ourWhatsapp TV for exclucive content and real-time updates.
+                Don't miss out on the main show
+                <a
+                  href="https://wa.me/+2348057437871?text=Hí+I+want+to+join+your+whatsapp+tv"
+                  ><button id="hero-btn">WhatsApp</button></a
+                >
+              </div>
+              <div class="back-txt">
+                follow us on Instagram for daily memes and trending reels you'll
+                love.
+                <a
+                  href="https://www.instagram.com/demark_tv?igsh=MXNseTN2bmkwY2k2bA=="
+                  ><button id="hero-btn">Instagram</button></a
+                >
+              </div>
+
+              <div class="back-txt">
+                like our Facebook page for the funniest memes and fresh laughs
+                every day
+                <a href="https://www.facebook.com/profile.php?id=61581087992879"
+                  ><button id="hero-btn">Facebook</button></a
+                >
+              </div>
+
+              <div class="back-txt">
+                Join our telegram community to chat, connect, and meet awesome
+                new people
+                <a href="https://t.me/DeMark_Tv_tg"
+                  ><button id="hero-btn">Telegram</button></a
+                >
+              </div>
+            </div>
+          </div>
+        </div>
+        <!-- hero section -->
+        <div class="hometxt">
+          <div class="about">
+            <h1>About Us</h1>
+            <p>
+              Welcome to DeMark TV, your go-to platform for endless entertainment
+              and business opportunities. Born in 2020 as a humble WhatsApp
+              group, we've grown into a vibrant community where laughter,
+              movies, and celebrity news thrive. Now, we're the perfect spot for
+              businesses to connect with their target audience and for
+              individuals to discover new opportunities. Join us and be part of
+              the excitement 
+               
+            </p>
+          </div>
+          <h1>Why Choose Us?</h1>
+          <div class="scrolling-div">
+            <!-- your text content here -->
+            <p>
+              At <b>DeMark TV</b> we offer a unique platform for entertainment,
+              education, and business opportunities.
+              Here's why you should
+              choose us:
+            </p>
+            <p>
+              <div class="list" id="moveserve">
+                <a href="#" data-target="body3">
+                  <button  class="homeServeBtn">Our Services</button>
+                </a>
+              </div>
+            </p>
+            <p>
+              <b>Engaging Content</b> We offer a diverse range of content,
+              including memes, movie updates, news, celebrity updates,
+              education, and business opportunities.
+            </p>
+            <p>
+              <b>Personalized Experience</b> We treat our viewers like family,
+              responding to every message and taking their feedback into
+              consideration.
+            </p>
+            <p>
+              <b>Interactive Community</b> Our interactive content sparks
+              conversations and encourages audience participation.
+            </p>
+            <p>
+              <b>Business Benefits</b> By advertising with us, businesses can
+              reach their target audience, improve their brand visibility, and
+              gain high-quality leads. We also offer affordable rates and
+              additional services like logo and flyer creation.
+            </p>
+            <p>
+              <b>Exclusive Opportunities</b> Our users benefit from exclusive
+              updates on affiliate marketing, cryptocurrency, cheaper data
+              prices, and free courses that can help them earn money or improve
+              their skills.
+            </p>
+            <p>
+              <b>Supportive Community</b> We provide advice and support to our
+              viewers, and our community comes together to help each other out.
+            </p>
+            <p>
+              <b>Large and Growing Audience</b> With over 5,000 members on
+              WhatsApp, 4,000 on Telegram, 500 on Instagram, and 200 on
+              Facebook, we offer a significant reach for businesses and
+              individuals looking to connect with a large audience.
+            </p>
+            <p>
+              By joining us, you'll be part of a vibrant community that's
+              dedicated to entertainment, education, and mutual support. Join us
+              today and discover the benefits of being part of our WhatsApp TV
+              family!
+            </p>
+            <!-- add more text content here -->
+          </div>
+        </div>
+      </div>
+      <!-- section one -->
+    </div>
+
+    <div class="body2">
+      <header class="header">
+        <nav>
+          <ul class="list">
+            <li>
+              <a href="" data-target="body1">
+                <img src="pic/homeicn.png" alt="Home" class="nav-icon" />
+                <div class="tooltip">Home</div>
+              </a>
+            </li>
+            <li id="active">
+              <a href="#" data-target="body2">
+                <img src="pic/abouticn.png" alt="" class="nav-icon" />
+                <div class="tooltip">About</div>
+              </a>
+            </li>
+            <li>
+              <a href="#" data-target="body3">
+                <img src="pic/serviceicn.png" alt="" class="nav-icon" />
+                <div class="tooltip">Services</div>
+              </a>
+            </li>
+            <li>
+              <a href="#" data-target="body4">
+                <img src="pic/contacticn.png" alt="" class="nav-icon" />
+                <div class="tooltip">Contact</div>
+              </a>
+            </li>
+            <li>
+              <a href="#" data-target="body5">
+                <img src="pic/updateicn.png" alt="" class="nav-icon" />
+                <div class="tooltip">Update</div>
+              </a>
+            </li>
+            <li>
+              <a href="#" data-target="body6">
+                <img src="pic/gameicn.png" alt="" class="nav-icon" />
+                <div class="tooltip">Game</div>
+              </a>
+            </li>
+          </ul>
+        </nav>
+      </header>
+      <div class="abt">
+        <div class="abttxt">
+          <h1>About us</h1>
+          <div class="abttxt1">
+            <div class="avater-sheet">
+              <div class="abt-avater-img"></div>
+
+              <div class="abt-avater-txt">
+                <h3>Mark Obosojie ohio</h3>
+                <p>Founder & CEO, Web Developer and Content creator</p>
+                <button id="abt-avater-txt-btn">Contact</button>
+              </div>
+            </div>
+          </div>
+
+          <div class="abt-avater-txt1">
+            <p>
+              Meet Mark O Ohio, the founder of DeMark TV, launched in 2020 with
+              a vision to build a vibrant community and create business
+              opportunities. Mark's goal is to grow his audience, provide
+              valuable content, and help businesses thrive. With a focus on
+              positivity, humor, and honesty, he's helped small businesses
+              kickstart their journey by providing an engaged audience. Mark is
+              committed to delivering the best content and entertainment, making
+              DeMark TV a go-to platform for connection, growth, and fun.
+            </p>
+          </div>
+        </div>
+
+        <div class="abttxtphn">
+          <h1>About us</h1>
+
+          <div class="abt-avater-txt1">
+            <p>
+              Meet Mark O Ohio, the founder of DeMark TV, launched in 2020 with
+              a vision to build a vibrant community and create business
+              opportunities. Mark's goal is to grow his audience, provide
+              valuable content, and help businesses thrive.
+            </p>
+          </div>
+
+          <div class="abttxt1">
+            <div class="avater-sheet">
+              <div class="abt-avater-img"></div>
+
+              <div class="abt-avater-txt">
+                <h3>Mark Obosojie ohio</h3>
+                <p>Founder & CEO, Web Developer and Content creator</p>
+                <button id="abt-avater-txt-btn" >Contact</button>
+              </div>
+            </div>
+          </div>
+
+          <div class="abt-avater-txt1">
+            <p>
+              With a focus on positivity, humor, and honesty, he's helped small
+              businesses kickstart their journey by providing an engaged
+              audience. Mark is committed to delivering the best content and
+              entertainment, making DeMark TV a go-to platform for connection,
+              growth, and fun.
+            </p>
+          </div>
+        </div>
+
+        <div class="abtleft">
+          <div class="abtleft-top">
+ 
+            <p>
+              <div class="list" id="moveserve">
+                <a href="#" data-target="body3">
+                  <button  class="homeServeBtn" >Our Services</button>
+                </a>
+              </div>
+            </p>
+
+            <p>
+              We offer a range of services designed to help you achieve your
+              goals: <br />
+
+              <b>Advertisements:</b> We take your product, enhance its
+              presentation, and post it to our platform to generate leads and
+              drive sales. Our targeted advertising approach ensures that your
+              product reaches the right audience.
+              <br />
+              <b> Social Media Management:</b>
+              We help individuals and businesses access and manage their social
+              media accounts, ensuring a strong online presence.
+              <br />
+              <b>Social Media Boosting: </b> We can increase your followers on
+              various platforms such as Instagram, Twitter, and Facebook,
+              helping you expand your reach and influence.
+              <br />
+              <b>Courses:</b> We offer a range of courses, both free and paid,
+              to help you develop new skills and improve your knowledge in areas
+              that interest you.
+              <br />
+              <b>Hacked Apps:</b> We provide premium versions of apps that can
+              help you perform tasks that would otherwise be limited or
+              unavailable.
+            </p>
+             
+            <p>
+              Our goal is to provide you with the tools you need to succeed.
+            </p>
+
+            <h3>History of DeMark TV</h3>
+            <p>
+              DeMark TV was created in 2020 by Mark O Ohio as an entertainment
+              platform on WhatsApp, sharing memes, movies, celebrity news, and
+              comedy. As our audience grew, we evolved into a vibrant community
+              where businesses can promote their products and services, and
+              individuals can connect with each other.
+            </p>
+            <br />
+            <div class="carousel-container">
+              <div class="carousel-track">
+                <!-- Original 10 testimonial cards -->
+                <div class="testimonial-card">
+                  <div class="testimonial-message">
+                    This product changed my life! I've never been happier with a
+                    purchase. Highly recommend to everyone.
+                  </div>
+                  <div class="stars">★★★★★</div>
+                  <div class="reviewer-name">Sarah Johnson</div>
+                </div>
+                <div class="testimonial-card">
+                  <div class="testimonial-message">
+                    Excellent customer service and the quality is outstanding.
+                    Will definitely buy again.
+                  </div>
+                  <div class="stars">★★★★★</div>
+                  <div class="reviewer-name">Michael Chen</div>
+                </div>
+                <div class="testimonial-card">
+                  <div class="testimonial-message">
+                    I was skeptical at first, but this exceeded all my
+                    expectations. Worth every penny!
+                  </div>
+                  <div class="stars">★★★★★</div>
+                  <div class="reviewer-name">Emily Rodriguez</div>
+                </div>
+                <div class="testimonial-card">
+                  <div class="testimonial-message">
+                    Fast shipping and the product works perfectly. Couldn't be
+                    more satisfied with my purchase.
+                  </div>
+                  <div class="stars">★★★★★</div>
+                  <div class="reviewer-name">David Wilson</div>
+                </div>
+                <div class="testimonial-card">
+                  <div class="testimonial-message">
+                    Absolutely amazing! The quality is top-notch and it arrived
+                    earlier than expected.
+                  </div>
+                  <div class="stars">★★★★★</div>
+                  <div class="reviewer-name">Jessica Kim</div>
+                </div>
+                <div class="testimonial-card">
+                  <div class="testimonial-message">
+                    Best decision I've made this year. The product is durable
+                    and performs exceptionally well.
+                  </div>
+                  <div class="stars">★★★★★</div>
+                  <div class="reviewer-name">Robert Taylor</div>
+                </div>
+                <div class="testimonial-card">
+                  <div class="testimonial-message">
+                    I'm impressed by how well this works. It's simple to use and
+                    very effective.
+                  </div>
+                  <div class="stars">★★★★★</div>
+                  <div class="reviewer-name">Amanda Smith</div>
+                </div>
+                <div class="testimonial-card">
+                  <div class="testimonial-message">
+                    Five stars isn't enough! This product is fantastic and the
+                    company is wonderful to work with.
+                  </div>
+                  <div class="stars">★★★★★</div>
+                  <div class="reviewer-name">Daniel Brown</div>
+                </div>
+                <div class="testimonial-card">
+                  <div class="testimonial-message">
+                    I've recommended this to all my friends. It's that good! You
+                    won't be disappointed.
+                  </div>
+                  <div class="stars">★★★★★</div>
+                  <div class="reviewer-name">Olivia Martinez</div>
+                </div>
+                <div class="testimonial-card">
+                  <div class="testimonial-message">
+                    Exceptional quality and value. I'm completely satisfied with
+                    my purchase and would buy again.
+                  </div>
+                  <div class="stars">★★★★★</div>
+                  <div class="reviewer-name">James Lee</div>
+                </div>
+
+                <!-- Duplicate of the first 5 cards for seamless looping -->
+                <div class="testimonial-card">
+                  <div class="testimonial-message">
+                    This product changed my life! I've never been happier with a
+                    purchase. Highly recommend to everyone.
+                  </div>
+                  <div class="stars">★★★★★</div>
+                  <div class="reviewer-name">Sarah Johnson</div>
+                </div>
+                <div class="testimonial-card">
+                  <div class="testimonial-message">
+                    Excellent customer service and the quality is outstanding.
+                    Will definitely buy again.
+                  </div>
+                  <div class="stars">★★★★★</div>
+                  <div class="reviewer-name">Michael Chen</div>
+                </div>
+                <div class="testimonial-card">
+                  <div class="testimonial-message">
+                    I was skeptical at first, but this exceeded all my
+                    expectations. Worth every penny!
+                  </div>
+                  <div class="stars">★★★★★</div>
+                  <div class="reviewer-name">Emily Rodriguez</div>
+                </div>
+                <div class="testimonial-card">
+                  <div class="testimonial-message">
+                    Fast shipping and the product works perfectly. Couldn't be
+                    more satisfied with my purchase.
+                  </div>
+                  <div class="stars">★★★★★</div>
+                  <div class="reviewer-name">David Wilson</div>
+                </div>
+                <div class="testimonial-card">
+                  <div class="testimonial-message">
+                    Absolutely amazing! The quality is top-notch and it arrived
+                    earlier than expected.
+                  </div>
+                  <div class="stars">★★★★★</div>
+                  <div class="reviewer-name">Jessica Kim</div>
+                </div>
+              </div>
+            </div>
+            <h3>Our Mission</h3>
+            <p>
+              At DeMark TV, we strive to build trust with our customers by
+              providing verified updates and products. We aim to deliver
+              exceptional experiences, ensuring smooth transactions and positive
+              interactions. Our goal is to foster a mutually beneficial
+              relationship between producers and consumers, driving growth and
+              success for all.
+            </p>
+            <h3>Our Community</h3>
+            <p>
+              We operate primarily on WhatsApp, with a growing presence on
+              Telegram, Instagram, TikTok, Facebook, and Twitter. Our community
+              values positivity, humor, and honesty, making us a reliable and
+              entertaining platform for all.
+            </p>
+            
+            <h3>Our Conviction?</h3>
+            <p>
+              At DeMark TV, we're committed to providing the best services, tested
+              and trusted by our thousands of viewers. We're reliable,
+              responsive, and dedicated to delivering exceptional experiences.
+              Join our community today and discover the benefits of partnering
+              with us!
+            </p>
+          </div>
+          <br />
+          <div class="abtleft-bottom"></div>
+        </div>
+      </div>
+    </div>
+
+    <div class="body3">
+      <header class="header">
+        <nav>
+          <ul class="list">
+            <li>
+              <a href="" data-target="body1">
+                <img src="pic/homeicn.png" alt="Home" class="nav-icon" />
+                <div class="tooltip">Home</div>
+              </a>
+            </li>
+            <li>
+              <a href="#" data-target="body2">
+                <img src="pic/abouticn.png" alt="" class="nav-icon" />
+                <div class="tooltip">About</div>
+              </a>
+            </li>
+            <li id="active">
+              <a href="#" data-target="body3">
+                <img src="pic/serviceicn.png" alt="" class="nav-icon" />
+                <div class="tooltip">Services</div>
+              </a>
+            </li>
+            <li>
+              <a href="#" data-target="body4">
+                <img src="pic/contacticn.png" alt="" class="nav-icon" />
+                <div class="tooltip">Contact</div>
+              </a>
+            </li>
+            <li>
+              <a href="#" data-target="body5">
+                <img src="pic/updateicn.png" alt="" class="nav-icon" />
+                <div class="tooltip">Update</div>
+              </a>
+            </li>
+            <li>
+              <a href="#" data-target="body6">
+                <img src="pic/gameicn.png" alt="" class="nav-icon" />
+                <div class="tooltip">Game</div>
+              </a>
+            </li>
+          </ul>
+        </nav>
+      </header>
+      <div class="contain-service-section">
+        <nav class="sidebar">
+          <h2>Categories</h2>
+
+          <!-- First Search Bar -->
+<div class="search-bar-container">
+  <input type="text" id="search-bar-1" placeholder="Search products">
+  <ul id="results-1"></ul>
+</div>
+
+
+          <a href="#facebook">Sponsored AD's</a>
+          <a href="#instagram">Social Media Logs & More</a>
+          <a href="#twitter">Social Media Boosting</a>
+          <a href="#tiktok">Courses</a>
+          <a href="#linked">Hacked Apps</a>
+        </nav>
+
+        <main class="main-content">
+          <!-- Sponsored AD's Section -->
+          <section id="facebook" class="category-section">
+            <div class="service-grid">
+              <div class="section">
+                <h2>Sponsored AD's</h2>
+                <div id="advert-section" class="cards-container">
+                  <!-- Cards will be injected here by JavaScript -->
+                </div>
+              </div>
+            </div>
+          </section>
+
+          <!-- social logs Section -->
+          <section id="instagram" class="category-section">
+            <div class="service-grid">
+              <div class="section">
+                <h2>Social Media Logs& More</h2>
+                <div id="accounts-section" class="cards-container">
+                  <!-- Cards will be injected here by JavaScript -->
+                </div>
+              </div>
+            </div>
+          </section>
+
+          <!-- Social Media Boosting Section -->
+          <section id="twitter" class="category-section">
+            <div class="service-grid">
+              <div class="section">
+                <h2>Social Media Boosting</h2>
+                <div id="services-section" class="cards-container">
+                  <!-- Cards will be injected here by JavaScript -->
+                </div>
+              </div>
+            </div>
+          </section>
+
+          <!-- Courses Section -->
+          <section id="tiktok" class="category-section">
+            <div class="service-grid">
+              <div class="section">
+                <h2>Courses</h2>
+                <div id="courses-section" class="cards-container">
+                  <!-- Cards will be injected here by JavaScript -->
+                </div>
+              </div>
+            </div>
+          </section>
+
+          <!-- Hacked Apps Section -->
+          <section id="linked" class="category-section">
+            <div class="service-grid">
+              <div class="section">
+                <h2>Hacked Apps</h2>
+                <div id="hacks-section" class="cards-container">
+                  <!-- Cards will be injected here by JavaScript -->
+                </div>
+              </div>
+            </div>
+          </section>
+        </main>
+      </div>
+    </div>
+
+    <div class="body4">
+      <header class="header">
+        <nav>
+          <ul class="list">
+            <li>
+              <a href="" data-target="body1">
+                <img src="pic/homeicn.png" alt="Home" class="nav-icon" />
+                <div class="tooltip">Home</div>
+              </a>
+            </li>
+            <li>
+              <a href="#" data-target="body2">
+                <img src="pic/abouticn.png" alt="" class="nav-icon" />
+                <div class="tooltip">About</div>
+              </a>
+            </li>
+            <li>
+              <a href="#" data-target="body3">
+                <img src="pic/serviceicn.png" alt="" class="nav-icon" />
+                <div class="tooltip">Services</div>
+              </a>
+            </li>
+            <li id="active">
+              <a href="#" data-target="body4">
+                <img src="pic/contacticn.png" alt="" class="nav-icon" />
+                <div class="tooltip">Contact</div>
+              </a>
+            </li>
+            <li>
+              <a href="#" data-target="body5">
+                <img src="pic/updateicn.png" alt="" class="nav-icon" />
+                <div class="tooltip">Update</div>
+              </a>
+            </li>
+            <li>
+              <a href="#" data-target="body6">
+                <img src="pic/gameicn.png" alt="" class="nav-icon" />
+                <div class="tooltip">Game</div>
+              </a>
+            </li>
+          </ul>
+        </nav>
+      </header>
+      <div class="contact-page" id="con-loading">
+        i
+      </div>
+    </div>
+
+    <div class="body5">
+      <header class="header">
+        <nav>
+          <ul class="list">
+            <li>
+              <a href="" data-target="body1">
+                <img src="pic/homeicn.png" alt="Home" class="nav-icon" />
+                <div class="tooltip">Home</div>
+              </a>
+            </li>
+            <li>
+              <a href="#" data-target="body2">
+                <img src="pic/abouticn.png" alt="" class="nav-icon" />
+                <div class="tooltip">About</div>
+              </a>
+            </li>
+            <li>
+              <a href="#" data-target="body3">
+                <img src="pic/serviceicn.png" alt="" class="nav-icon" />
+                <div class="tooltip">Services</div>
+              </a>
+            </li>
+
+            <li>
+              <a href="#" data-target="body4">
+                <img src="pic/contacticn.png" alt="" class="nav-icon" />
+                <div class="tooltip">Contact</div>
+              </a>
+            </li>
+            <li id="active">
+              <a href="#" data-target="body5">
+                <img src="pic/updateicn.png" alt="" class="nav-icon" />
+                <div class="tooltip">Update</div>
+              </a>
+            </li>
+            <li>
+              <a href="#" data-target="body6">
+                <img src="pic/gameicn.png" alt="" class="nav-icon" />
+                <div class="tooltip">Game</div>
+              </a>
+            </li>
+          </ul>
+        </nav>
+      </header>
+      <div class="contain-service-section">
+        <nav class="sidebar">
+          <h2>Categories</h2>
+
+          
+<!-- Second Search Bar -->
+<div class="search-bar-container">
+  <input type="text" id="search-bar-2" placeholder="Search products">
+  <ul id="results-2"></ul>
+</div>
+
+          <a href="#facebook1">Premium Services</a>
+          <a href="#instagram1">Web Services</a>
+          <a href="#twitter1">Crypto Updates</a>
+          <a href="#tiktok1">Free Course</a>
+          <a href="#linked1">Movie Updates</a>
+        </nav>
+
+        <main class="main-content">
+          <!-- Facebook Section -->
+          <section id="facebook1" class="category-section">
+            <div class="service-grid">
+              <div class="section">
+                <h2>Premium Services</h2>
+                <div id="sale-section" class="cards-container">
+                  <!-- Cards will be injected here by JavaScript -->
+                </div>
+              </div>
+            </div>
+          </section>
+
+          <!-- Instagram Section -->
+          <section id="instagram1" class="category-section">
+            <div class="service-grid">
+              <div class="section">
+                <h2>Web Services</h2>
+                <div id="dum-section" class="cards-container">
+                  <!-- Cards will be injected here by JavaScript -->
+                </div>
+              </div>
+            </div>
+          </section>     
+
+          <!-- Twitter Section -->
+          <section id="twitter1" class="category-section">
+            <div class="service-grid">
+              <div class="section">
+                <h2>Crypto Updates</h2>
+                <div id="dum2-section" class="cards-container">
+                  <!-- Cards will be injected here by JavaScript -->
+                </div>
+              </div>
+            </div>
+          </section>
+
+          <!-- TikTok Section -->
+          <section id="tiktok1" class="category-section">
+            <div class="category-title">TikTok Services</div>
+            <div class="service-grid">
+              <div class="section">
+                <h2>Crypto Updates</h2>
+                <div id="dum3-section" class="cards-container">
+                  <!-- Cards will be injected here by JavaScript -->
+                </div>
+              </div>
+            </div>
+          </section>
+
+          <!-- TikTok Section -->
+          <section id="linked1" class="category-section">
+            <div class="category-title">linked Services</div>
+            <div class="service-grid">
+              <div class="section">
+                <h2>Movie Updates</h2>
+                <div id="dum4-section" class="cards-container">
+                  <!-- Cards will be injected here by JavaScript -->
+                </div>
+              </div>
+            </div>
+          </section>
+        </main>
+      </div>
+    </div>
+
+    <div class="body6">
+      <header class="header">
+        <nav>
+          <ul class="list">
+            <li>
+              <a href="" data-target="body1">
+                <img src="pic/homeicn.png" alt="Home" class="nav-icon" />
+                <div class="tooltip">Home</div>
+              </a>
+            </li>
+            <li>
+              <a href="#" data-target="body2">
+                <img src="pic/abouticn.png" alt="" class="nav-icon" />
+                <div class="tooltip">About</div>
+              </a>
+            </li>
+            <li>
+              <a href="#" data-target="body3">
+                <img src="pic/serviceicn.png" alt="" class="nav-icon" />
+                <div class="tooltip">Services</div>
+              </a>
+            </li>
+            <li>
+              <a href="#" data-target="body4">
+                <img src="pic/contacticn.png" alt="" class="nav-icon" />
+                <div class="tooltip">Contact</div>
+              </a>
+            </li>
+            <li>
+              <a href="#" data-target="body5">
+                <img src="pic/updateicn.png" alt="" class="nav-icon" />
+                <div class="tooltip">Update</div>
+              </a>
+            </li>
+            <li id="active">
+              <a href="#" data-target="body6">
+                <img src="pic/gameicn.png" alt="" class="nav-icon" />
+                <div class="tooltip">Game</div>
+              </a>
+            </li>
+          </ul>
+        </nav>
+      </header>
+
+      <div class="game-section">
+        <div class="game-list">
+          <div class="a-game">
+            <img
+              src="pic/gsnake.jpg"
+              alt=""
+              data-detail="pic/gsnake-link.jpg"
+              data-link="game/snake game .html"
+              class="game"  loading="lazy"
+            />
+          </div>
+
+          <div class="a-game">
+            <img
+              src="pic/g2480.jpg"
+              alt=""
+              data-detail="pic/g2480-link.jpg"
+              data-link="game/2048.html"
+              class="game"  loading="lazy"
+            />
+          </div>
+
+          <div class="a-game">
+            <img
+              src="pic/gmemory-card.jpg"
+              alt=""
+              data-detail="pic/gmemory-card-link.jpg"
+              data-link="game/flip card.html"
+              class="game"  loading="lazy"
+            />
+          </div>
+
+          <div class="a-game">
+            <img
+              src="pic/gjumper.jpg"
+              alt=""
+              data-detail="pic/gjumper-link.jpg"
+              data-link="game/jumper.html"
+              class="game"  loading="lazy"
+            />
+          </div>
+
+          <div class="a-game">
+            <img
+              src="pic/gtic-tac-toe.jpg"
+              alt=""
+              data-detail="pic/gtic-tac-toe-link.jpg"
+              data-link="game/tic tac toe.html"
+              class="game" loading="lazy"
+            />
+          </div>
+
+          <div class="a-game">
+            <img
+              src="pic/gmenja.png"
+              alt=""
+              data-detail="pic/gmenja-link.png"
+              data-link="game/menja.html"
+              class="game"  loading="lazy"
+            />
+          </div>
+        </div>
+
+        <div class="game-display" id="gameDisplay"></div>
+      </div>
+    </div>
+
+    <div class="body-contact">
+      <div class="design" id="hide">
+        <p>
+          designed by
+          <a href="https://markohio.github.io/Portfolio-/"><b>Mark Ohio</b></a>
+        </p>
+      </div>
+
+      <div class="contact">
+        <a href="https://wa.me/+2348057437871?text=Hí">
+          <button class="con-btn">
+            <img src="pic/con-wa.png" alt="" class="con-img" />
+          </button>
+        </a>
+        <a href="https://www.facebook.com/profile.php?id=61581087992879">
+          <button class="con-btn">
+            <img src="pic/con-fb.png" alt="" class="con-img" />
+          </button>
+        </a>
+        <!-- toggle btn for light/ light mode start -->
+
+        <div class="toggle-container" id="toggle">
+          <div class="toggle-circle">
+            <div class="icon" id="icon">🌞</div>
+          </div>
+        </div>
+
+        <!-- toggle btn for light/ light mode end -->
+        <a href="https://www.instagram.com/demark_tv?igsh=MXNseTN2bmkwY2k2bA==">
+          <button class="con-btn">
+            <img src="pic/con-ig.png" alt="" class="con-img" />
+          </button>
+        </a>
+        <a href="https://twitter.com/TvDemark19487">
+          <button class="con-btn">
+            <img src="pic/con-x.png" alt="" class="con-img" />
+          </button>
+        </a>
+      </div>
+
+      <div class="copyrights" id="hide">
+        <p>
+          <a href="" id="tire"><b>©2025 copyrights</b> </a>
+          <a href="https://markohio.github.io/DeMark-2.0/terms%20and%20condition.html" id="tire"> T $ C</a>
+        </p>
+      </div>
+    </div>
+    <footer class="footer2">
+      <div class="" style="margin: 0; padding: 0"> <a href="https://markohio.github.io/DeMark-2.0/terms%20and%20condition.html">©DeMark TV T $ C</a></div>
+      <div class="" style="margin: 0; padding: 0">
+        Designed by
+        <a href="https://markohio.github.io/Portfolio-/">Mark Ohio</a>
+      </div>
+    </footer>
+  </body>
+
+  <!-- landing page end -->
+  <script src="script.js"></script>
+ 
+  <!-- to make pages display one at a time -->
+  <script>
+    document.addEventListener("DOMContentLoaded", () => {
+      const navLinks = document.querySelectorAll(".list a");
+      const sections = document.querySelectorAll(
+        ".body1, .body2, .body3, .body4, .body5, .body6"
+      );
+
+      // Function to show a specific section
+      function showSection(target) {
+        sections.forEach((section) => {
+          if (section.classList.contains(target)) {
+            section.style.display = "block";
+          } else {
+            section.style.display = "none";
+          }
+        });
+        localStorage.setItem("currentSection", target); // Save current section to local storage
+      }
+
+      // Add event listeners to nav links
+      navLinks.forEach((link) => {
+        link.addEventListener("click", (e) => {
+          e.preventDefault();
+          const target = link.getAttribute("data-target");
+          showSection(target);
+        });
+      });
+
+      // Show the saved section on page load
+      const savedSection = localStorage.getItem("currentSection");
+      if (savedSection) {
+        showSection(savedSection);
+      } else {
+        // If no saved section, show the first section (body1) by default
+        showSection("body1");
+      }
+    });
+  </script>
+
+  <!-- to display game details -->
+  <script>
+    const gameImages = document.querySelectorAll(".game-list .game");
+    const display = document.getElementById("gameDisplay");
+
+    function displayImage(src, link) {
+      if (link) {
+        display.innerHTML = `<a href="${link}" target="_blank"><img src="${src}" alt="Selected Detail"></a>`;
+      } else {
+        display.innerHTML = `<img src="${src}" alt="Selected Detail">`;
+      }
+    }
+
+    gameImages.forEach((img) => {
+      img.addEventListener("click", () => {
+        const detailSrc = img.getAttribute("data-detail");
+        const detailLink = img.getAttribute("data-link");
+        displayImage(detailSrc, detailLink);
+        localStorage.setItem("lastDetailImage", detailSrc);
+        localStorage.setItem("lastDetailLink", detailLink);
+      });
+    });
+
+    window.addEventListener("DOMContentLoaded", () => {
+      const lastImage = localStorage.getItem("lastDetailImage");
+      const lastLink = localStorage.getItem("lastDetailLink");
+      if (lastImage) {
+        displayImage(lastImage, lastLink);
+      }
+    });
+  </script>
+
+   
+
+  <!-- theme toggle and change -->
+  <script>
+    // to switch page to light mode
+
+    // for the button to trigger the lightmode css
+    const toggle = document.getElementById("toggle");
+    const body = document.body;
+    const icon = document.getElementById("icon");
+
+    //  to remember the user theme choice
+    if (localStorage.getItem("lightMode") === "enabled") {
+      body.classList.add("light-mode");
+      toggle.classList.add("light");
+      icon.textContent = "🌙";
+    }
+
+    // to switch between modes and change the icon on the toggle btn
+    toggle.addEventListener("click", () => {
+      if (body.classList.contains("light-mode")) {
+        body.classList.remove("light-mode");
+        toggle.classList.remove("light");
+        icon.textContent = "🌙";
+        localStorage.setItem("lightMode", "disabled");
+      } else {
+        body.classList.add("light-mode");
+        toggle.classList.add("light");
+        icon.textContent = "🌙";
+        localStorage.setItem("lightMode", "enabled");
+      }
+    });
+  </script>
+
+  <!-- home page glow text -->
+  <script>
+    const glowText = document.querySelector(".hero-glow-text");
+    setInterval(() => {
+      glowText.style.opacity = Math.random() > 0.9 ? 0.8 : 1;
+    }, 150);
+  </script>
+<!-- testimonial -->
+  <script>
+    // This script ensures the carousel loops seamlessly
+    document.addEventListener("DOMContentLoaded", function () {
+      const track = document.querySelector(".carousel-track");
+      const cards = document.querySelectorAll(".testimonial-card");
+
+      // Set the track width to accommodate all cards
+      // We use the first 10 cards (original set) to calculate width
+      const cardWidth = cards[0].offsetWidth + 30; // 30 accounts for margin
+      track.style.width = cardWidth * 10 + "px";
+
+      // Make all cards the same height as the tallest card
+      let maxHeight = 0;
+      cards.forEach((card) => {
+        if (card.offsetHeight > maxHeight) {
+          maxHeight = card.offsetHeight;
+        }
+      });
+
+      cards.forEach((card) => {
+        card.style.height = maxHeight + "px";
+      });
+
+      // Adjust animation duration based on number of cards
+      const style = document.createElement("style");
+      style.innerHTML = `
+            @keyframes scroll {
+                0% { transform: translateX(0); }
+                100% { transform: translateX(-${cardWidth * 5}px); }
+            }
+        `;
+      document.head.appendChild(style);
+    });
+  </script> 
+  <!-- nav hover text -->
+  <script>
+    document.addEventListener("DOMContentLoaded", () => {
+      const images = document.querySelectorAll(".nav-icon");
+      const longPressDuration = 2000; // 2 seconds
+
+      images.forEach((image) => {
+        const hoverText = image.getAttribute("data-hover-text");
+        if (!hoverText) {
+          console.warn(
+            'Image with class "nav-icon" is missing "data-hover-text" attribute.',
+            image
+          );
+          return;
+        }
+
+        const overlay = document.createElement("div");
+        overlay.classList.add("hover-text-overlay");
+        overlay.textContent = hoverText;
+        image.parentNode.insertBefore(overlay, image.nextSibling); // Insert overlay after the image
+
+        // We need to make sure the image itself is positioned relatively for the overlay to work
+        // If the image is already part of a flex/grid container, this might need adjustment
+        // For individual images, this ensures the overlay sticks to it.
+        if (getComputedStyle(image).position === "static") {
+          image.style.position = "relative";
+          // Also ensure the image is treated as a block or inline-block for proper sizing and margin
+          image.style.display = "inline-block";
+        }
+
+        let pressTimer;
+
+        // Desktop Hover Effects
+        image.addEventListener("mouseenter", () => {
+          if (!/Mobi|Android|iPhone|iPad|iPod/i.test(navigator.userAgent)) {
+            // Check if not a mobile device
+            overlay.classList.add("active");
+          }
+        });
+
+        image.addEventListener("mouseleave", () => {
+          if (!/Mobi|Android|iPhone|iPad|iPod/i.test(navigator.userAgent)) {
+            // Check if not a mobile device
+            overlay.classList.remove("active");
+          }
+        });
+
+        // Mobile Long Press Effects
+        image.addEventListener("touchstart", (e) => {
+          if (/Mobi|Android|iPhone|iPad|iPod/i.test(navigator.userAgent)) {
+            // Check if a mobile device
+            // e.preventDefault(); // Uncomment if you want to prevent default touch behaviors like scrolling
+            pressTimer = setTimeout(() => {
+              overlay.classList.add("active");
+            }, longPressDuration);
+          }
+        });
+
+        image.addEventListener("touchend", () => {
+          if (/Mobi|Android|iPhone|iPad|iPod/i.test(navigator.userAgent)) {
+            // Check if a mobile device
+            clearTimeout(pressTimer);
+          }
+        });
+
+        image.addEventListener("touchcancel", () => {
+          if (/Mobi|Android|iPhone|iPad|iPod/i.test(navigator.userAgent)) {
+            // Check if a mobile device
+            clearTimeout(pressTimer);
+          }
+        });
+      });
+    });
+  </script>
+<!-- changing title -->
+  <script>
+    const titles = [
+      "DeMark WhatsApp Television",
+      "Secure & Reliable",
+      "Don't miss out on our deals!",
+    ];
+
+    let index = 0;
+
+    setInterval(() => {
+      document.title = titles[index];
+      index = (index + 1) % titles.length;
+    }, 2500); // Changes title every 2.5 seconds
+  </script>
+
+  <!-- //smok3 -->
+  <script>
+    const canvas = document.getElementById("smokeCanvas");
+    const ctx = canvas.getContext("2d");
+
+    let width, height;
+    const lines = [];
+
+    function resize() {
+      width = canvas.width = window.innerWidth;
+      height = canvas.height = window.innerHeight;
+    }
+
+    window.addEventListener("resize", resize);
+    resize();
+
+    class SmokeLine {
+      constructor() {
+        this.reset();
+      }
+
+      reset() {
+        this.x = Math.random() * width;
+        this.y = height + Math.random() * 200;
+        this.length = 50 + Math.random() * 100;
+        this.speed = 0.5 + Math.random();
+        this.opacity = 0.05 + Math.random() * 0.1;
+        this.amplitude = 20 + Math.random() * 30;
+        this.frequency = 0.01 + Math.random() * 0.02;
+        this.offset = Math.random() * 1000;
+      }
+
+      update() {
+        this.y -= this.speed;
+        if (this.y + this.length < 0) this.reset();
+      }
+
+      draw(ctx) {
+        ctx.beginPath();
+        for (let i = 0; i < this.length; i++) {
+          const y = this.y + i;
+          const x =
+            this.x +
+            Math.sin((this.offset + i) * this.frequency) * this.amplitude;
+          if (i === 0) ctx.moveTo(x, y);
+          else ctx.lineTo(x, y);
+        }
+        ctx.strokeStyle = `rgba(255, 255, 255, ${this.opacity})`;
+        ctx.stroke();
+      }
+    }
+
+    for (let i = 0; i < 40; i++) {
+      lines.push(new SmokeLine());
+    }
+    function animate() {
+      ctx.clearRect(0, 0, width, height);
+      lines.forEach((line) => {
+        line.update();
+        line.draw(ctx);
+      });
+      requestAnimationFrame(animate);
+    }
+
+    animate();
+  </script>
+</html>

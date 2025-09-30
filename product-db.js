@@ -766,16 +766,88 @@
             });
         }
 
-        // Render all sections when page loads
-        document.addEventListener('DOMContentLoaded', function() {
-            renderProducts('advert'); 
-            renderProducts('accounts');
-            renderProducts('services');
-            renderProducts('courses');
-            renderProducts('hacks');
-            renderProducts('sale');
-            renderProducts('dum');
-            renderProducts('dum2');
-            renderProducts('dum3');
-            renderProducts('dum4');
+       // Attach IDs to product cards so we can scroll to them
+function assignProductIds() {
+  document.querySelectorAll('.product-card').forEach((card, index) => {
+    card.setAttribute('id', `product-${index}`);
+  });
+}
+
+// Generalized search bar function
+function setupSearchBar(inputId, resultsId, allowedCategories) {
+  const searchInput = document.getElementById(inputId);
+  const resultsList = document.getElementById(resultsId);
+
+  searchInput.addEventListener('input', function () {
+    const query = this.value.toLowerCase();
+    resultsList.innerHTML = '';
+
+    if (!query) {
+      resultsList.style.display = 'none';
+      return;
+    }
+
+    // Filter products only in allowed categories
+    const matches = products.filter(product =>
+      allowedCategories.includes(product.category) &&
+      product.name.toLowerCase().includes(query)
+    );
+
+    if (matches.length > 0) {
+      resultsList.style.display = 'block';
+      matches.forEach(match => {
+        const li = document.createElement('li');
+        li.textContent = match.name;
+
+        li.addEventListener('click', () => {
+          resultsList.style.display = 'none';
+          searchInput.value = match.name;
+
+          const productIndex = products.findIndex(p => p.name === match.name);
+          const target = document.getElementById(`product-${productIndex}`);
+
+          if (target) {
+            target.scrollIntoView({ behavior: 'smooth', block: 'center' });
+            target.style.outline = '2px solid red';
+            setTimeout(() => target.style.outline = 'none', 2000);
+          }
         });
+
+        resultsList.appendChild(li);
+      });
+    } else {
+      resultsList.style.display = 'none';
+    }
+  });
+}
+
+// Render products + initialize searches
+document.addEventListener('DOMContentLoaded', function () {
+  renderProducts('advert');
+  renderProducts('accounts');
+  renderProducts('services');
+  renderProducts('courses');
+  renderProducts('hacks');
+  renderProducts('sale');
+  renderProducts('dum');
+  renderProducts('dum2');
+  renderProducts('dum3');
+  renderProducts('dum4');
+
+  assignProductIds();
+
+  // First search bar → adverts, accounts, services, courses, hacks
+  setupSearchBar(
+    'search-bar-1',
+    'results-1',
+    ['advert', 'accounts', 'services', 'courses', 'hacks']
+  );
+
+  // Second search bar → sale, dum, dum2, dum3, dum4
+  setupSearchBar(
+    'search-bar-2',
+    'results-2',
+    ['sale', 'dum', 'dum2', 'dum3', 'dum4']
+  );
+});
+
